@@ -1,8 +1,10 @@
-import { Component } from 'solid-js';
+import { lazy, Component } from 'solid-js';
 import { RouteDefinition, useRoutes } from 'solid-app-router';
-import AppShellView from './views/appShell/AppShell.view';
-import PeopleShellView from './views/people/People.view';
-import PersonDetailView from './views/PersonDetail.view';
+import PeopleData from './views/people/People.data';
+
+const AppShellView = lazy(() => import('./views/appShell/AppShell.view'));
+const PeopleShellView = lazy(() => import('./views/people/People.view'));
+const PersonDetailView = lazy(() => import('./views/PersonDetail.view'));
 
 const routes: Array<RouteDefinition> = [
   {
@@ -12,6 +14,7 @@ const routes: Array<RouteDefinition> = [
       {
         path: '/people',
         component: PeopleShellView,
+        data: PeopleData,
         children: [
           {
             path: '/:id',

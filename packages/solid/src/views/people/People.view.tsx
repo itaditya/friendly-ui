@@ -1,11 +1,5 @@
 import { Component, Show } from 'solid-js';
-import {
-  Link,
-  Outlet,
-  useMatch,
-  useParams,
-  useSearchParams,
-} from 'solid-app-router';
+import { Link, Outlet, useMatch, useRouteData, useSearchParams } from 'solid-app-router';
 import Card from './Card';
 import PersonAvatar from './PersonAvatar';
 import layoutStyles from '@friendly-ui/design/layout.module.css';
@@ -13,9 +7,13 @@ import peopleStyles from '@friendly-ui/design/people.module.css';
 
 const PeopleView: Component = () => {
   const [searchParams] = useSearchParams();
+  const routeData  = useRouteData();
   const match = useMatch(() => '/people/:id');
 
   function getHeaderActionHref() {
+    const data = routeData();
+    console.log(data);
+    
     const personId = match()?.params.id;
 
     let url = '/people';

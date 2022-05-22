@@ -1,0 +1,27 @@
+[
+  {
+    "id": "aditya-agarwal",
+    "name": "Aditya",
+    "imageUrl": "https://devadi.netlify.app/dp_twitter.png"
+  },
+  {
+    "id": "kiko-beats",
+    "name": "Kiko Beats",
+    "imageUrl": "https://unavatar.io/kikobeats"
+  },
+  {
+    "id": "jake-peralta",
+    "name": "Jake Peralta",
+    "imageUrl": "https://unavatar.io/github/mdo"
+  },
+  {
+    "id": "rosa-diaz",
+    "name": "Rosa Diaz",
+    "imageUrl": "https://unavatar.io/kikobeats"
+  },
+  {
+    "id": "sam-tarly",
+    "name": "Sam Tarly",
+    "imageUrl": "https://unavatar.io/github/mdo"
+  }
+]
