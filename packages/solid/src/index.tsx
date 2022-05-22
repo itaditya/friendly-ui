@@ -1,7 +1,5 @@
-/* @refresh reload */
 import { render } from 'solid-js/web';
-
-import './index.css';
 import App from './App';
+import '@friendly-ui/design/global.css';
 
 render(() => <App />, document.getElementById('root') as HTMLElement);
