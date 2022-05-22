@@ -31,13 +31,17 @@ importers:
 
   packages/solid:
     specifiers:
+      '@formkit/auto-animate': 1.0.0-beta.1
       '@friendly-ui/design': workspace:*
+      solid-auto-animate: ^0.1.0
       solid-js: ^1.4.2
       typescript: ^4.6.4
       vite: ^2.9.9
       vite-plugin-solid: ^2.2.6
     dependencies:
+      '@formkit/auto-animate': 1.0.0-beta.1
       '@friendly-ui/design': link:../design
+      solid-auto-animate: 0.1.0_6gjph5533ss6y5knwazsgmwaia
       solid-js: 1.4.2
     devDependencies:
       typescript: 4.6.4
@@ -398,6 +402,18 @@ packages:
       '@babel/helper-validator-identifier': 7.16.7
       to-fast-properties: 2.0.0
     dev: true
+
+  /@formkit/auto-animate/1.0.0-beta.1:
+    resolution: {integrity: sha512-I3OWOBaPZKSJL4bsooXI8kC3q7bcgibD2oML0P/Lir6MnbvUe/0/7EH8br024juvM/Ulm9C9xGx9CJUQYrOWSA==}
+    peerDependencies:
+      react: ^16.8.0
+      vue: ^3.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      vue:
+        optional: true
+    dev: false
 
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
@@ -960,6 +976,17 @@ packages:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
     dev: true
+
+  /solid-auto-animate/0.1.0_6gjph5533ss6y5knwazsgmwaia:
+    resolution: {integrity: sha512-dPXrWBYGQsvgJ4lBTPpavH5WfttbwWrkrCeK4PK3tX3uoT73qvS9WtS0Fi1Zxgu4aQfISYizM0kKPaSPXfCa/A==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@formkit/auto-animate': ^1.0
+      solid-js: ^1.0
+    dependencies:
+      '@formkit/auto-animate': 1.0.0-beta.1
+      solid-js: 1.4.2
+    dev: false
 
   /solid-js/1.4.2:
     resolution: {integrity: sha512-IU5yKuT8P/n5F5g8j1rTXqxUdPYmoZDk/074TG94AEYf/nyXAeG82BSge4/lLIbCfUcnGUJ6DRdebIjujOAYyg==}

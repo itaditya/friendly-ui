@@ -4,6 +4,7 @@
   gap: 30px;
   height: 100vh;
   padding-inline: 20px;
+  overflow: hidden;
 }
 
 .fillChild {
