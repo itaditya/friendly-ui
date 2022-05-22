@@ -6,6 +6,7 @@ import {
   useRouteData,
   useSearchParams,
 } from 'solid-app-router';
+import { autoAnimate } from 'solid-auto-animate';
 import Card from './Card';
 import PersonAvatar from './PersonAvatar';
 import { usePeopleStore } from '../../../shared/peopleStore';
@@ -14,6 +15,7 @@ import layoutStyles from '@friendly-ui/design/layout.module.css';
 import peopleStyles from '@friendly-ui/design/people.module.css';
 
 const PeopleView: Component = () => {
+  autoAnimate; // to prevent TS from removing the directive
   const [searchParams] = useSearchParams();
   const match = useMatch(() => '/people/:id');
   const routeData = useRouteData();
@@ -49,7 +51,7 @@ const PeopleView: Component = () => {
     <>
       <Card class={layoutStyles.fillChild}>
         <header class={peopleStyles.header}>
-          <h4 class={peopleStyles.heading}>Find People</h4>
+          <h4 class={peopleStyles.heading}>Connect</h4>
           <Link href={getHeaderActionHref()} class={peopleStyles.headerAction}>
             <Show
               when={searchParams.filter === 'friends'}
@@ -59,7 +61,7 @@ const PeopleView: Component = () => {
             </Show>
           </Link>
         </header>
-        <main class={peopleStyles.avatarGrid}>
+        <main class={peopleStyles.avatarGrid} use:autoAnimate>
           <For each={peopleList()}>
             {(personId) => <PersonAvatar personId={personId} />}
           </For>
