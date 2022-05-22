@@ -10,7 +10,7 @@
 }
 
 .avatarLink:focus-visible > .avatar {
-  outline: 1px solid hsl(300deg 3% 93%);
+  outline: 2px solid hsl(217deg 91% 60%);
 }
 
 .avatar {
@@ -35,12 +35,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: hsl(228deg 7% 14%);
   border-radius: 100%;
-  height: 20px;
   aspect-ratio: 1;
+  background-color: hsl(214deg 100% 97%);
+  transition: all 0.2s;
+}
+
+.addBtn:hover {
+  transform: scale(1.1);
 }
 
 .addBtn:focus-visible {
-  outline: 2px solid hsl(300deg 3% 93%);
+  background-color: hsl(217deg 91% 60%);
+}
+
+.addBtnIcon {
+  font-size: 1.5rem;
+  color: hsl(217deg 91% 60%);
+}
+
+.addBtn:focus-visible > .addBtnIcon {
+  color: hsl(214deg 100% 97%);
 }
