@@ -1,19 +1,26 @@
-import { Component, Show } from 'solid-js';
-import { Link, Outlet, useMatch, useRouteData, useSearchParams } from 'solid-app-router';
+import { Component, For, Show, onMount } from 'solid-js';
+import {
+  Link,
+  Outlet,
+  useMatch,
+  useRouteData,
+  useSearchParams,
+} from 'solid-app-router';
 import Card from './Card';
 import PersonAvatar from './PersonAvatar';
+import { usePeopleStore } from '../../../shared/peopleStore';
 import layoutStyles from '@friendly-ui/design/layout.module.css';
 import peopleStyles from '@friendly-ui/design/people.module.css';
+import { createPeopleList } from './createPeopleList';
 
 const PeopleView: Component = () => {
   const [searchParams] = useSearchParams();
-  const routeData  = useRouteData();
   const match = useMatch(() => '/people/:id');
+  const routeData = useRouteData();
+  const [_state, methods] = usePeopleStore();
+  const peopleList = createPeopleList();
 
   function getHeaderActionHref() {
-    const data = routeData();
-    console.log(data);
-    
     const personId = match()?.params.id;
 
     let url = '/people';
@@ -33,6 +40,11 @@ const PeopleView: Component = () => {
     return url;
   }
 
+  onMount(() => {
+    const data = routeData();
+    methods.setData(data);
+  });
+
   return (
     <>
       <Card class={layoutStyles.fillChild}>
@@ -48,20 +60,9 @@ const PeopleView: Component = () => {
           </Link>
         </header>
         <main class={peopleStyles.avatarGrid}>
-          <PersonAvatar
-            personId="1"
-            src="https://devadi.netlify.app/dp_twitter.png"
-          />
-          <PersonAvatar personId="2" src="https://unavatar.io/kikobeats" />
-          <PersonAvatar personId="3" src="https://unavatar.io/github/mdo" />
-          <PersonAvatar
-            personId="4"
-            src="https://devadi.netlify.app/dp_twitter.png"
-          />
-          <PersonAvatar
-            personId="5"
-            src="https://devadi.netlify.app/dp_twitter.png"
-          />
+          <For each={peopleList()}>
+            {(personId) => <PersonAvatar personId={personId} />}
+          </For>
         </main>
       </Card>
       <Card variant="split">

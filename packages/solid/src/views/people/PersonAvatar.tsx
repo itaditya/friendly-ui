@@ -1,10 +1,10 @@
 import { mergeProps, ParentComponent } from 'solid-js';
-import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
 import { Link, useSearchParams } from 'solid-app-router';
+import { usePeopleStore } from '../../../shared/peopleStore';
+import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
 
 export type PersonAvatarProps = {
   personId: string;
-  src: string;
   class?: string;
 };
 
@@ -13,6 +13,11 @@ const defaultProps = { class: '' } as const;
 const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
   const p = mergeProps(defaultProps, ip);
   const [searchParams] = useSearchParams();
+  const [state] = usePeopleStore();
+
+  function person() {
+    return state.peopleDetailsMap[p.personId];
+  }
 
   function getHref() {
     const urlParams = new URLSearchParams(searchParams);
@@ -28,10 +33,11 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
         class={personAvatarStyles.avatarLink}
       >
         <img
-          src={p.src}
-          alt="remember to fill this"
+          src={person().imageUrl}
+          alt=""
           class={`${personAvatarStyles.avatar} ${p.class}`}
         />
+        <span class={personAvatarStyles.avatarName}>{person().name}</span>
       </Link>
       <button type="button" class={personAvatarStyles.addBtn}></button>
     </div>

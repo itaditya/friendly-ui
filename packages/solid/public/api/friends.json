@@ -1,1 +1,5 @@
-["kiko-beats", "jake-peralta", "sam-tarly"]
+{
+  "kiko-beats": "requested",
+  "jake-peralta": "accepted",
+  "sam-tarly": "accepted"
+}
