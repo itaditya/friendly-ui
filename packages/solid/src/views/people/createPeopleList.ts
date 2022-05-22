@@ -1,6 +1,6 @@
 import { createMemo } from 'solid-js';
 import { useSearchParams } from 'solid-app-router';
-import { usePeopleStore } from '../../../shared/peopleStore';
+import { usePeopleStore } from '../../shared/peopleStore';
 
 export function createPeopleList() {
   const [state] = usePeopleStore();

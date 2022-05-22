@@ -1,7 +1,7 @@
 import { lazy, Component } from 'solid-js';
 import { RouteDefinition, useRoutes } from 'solid-app-router';
 import PeopleData from './views/people/People.data';
-import { PeopleStoreProvider } from '../shared/peopleStore';
+import { PeopleStoreProvider } from './shared/peopleStore';
 
 const AppShellView = lazy(() => import('./views/appShell/AppShell.view'));
 const PeopleShellView = lazy(() => import('./views/people/People.view'));

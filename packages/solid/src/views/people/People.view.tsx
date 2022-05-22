@@ -9,7 +9,7 @@ import {
 import { autoAnimate } from 'solid-auto-animate';
 import Card from './Card';
 import PersonAvatar from './PersonAvatar';
-import { usePeopleStore } from '../../../shared/peopleStore';
+import { usePeopleStore } from '../../shared/peopleStore';
 import { createPeopleList } from './createPeopleList';
 import layoutStyles from '@friendly-ui/design/layout.module.css';
 import peopleStyles from '@friendly-ui/design/people.module.css';

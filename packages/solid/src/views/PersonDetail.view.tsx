@@ -1,6 +1,6 @@
 import { Component, createEffect } from 'solid-js';
 import { useParams } from 'solid-app-router';
-import { usePeopleStore } from '../../shared/peopleStore';
+import { usePeopleStore } from '../shared/peopleStore';
 
 const PersonDetailView: Component = (p) => {
   const params = useParams();

@@ -1,6 +1,6 @@
 import { mergeProps, ParentComponent } from 'solid-js';
 import { Link, useSearchParams } from 'solid-app-router';
-import { usePeopleStore } from '../../../shared/peopleStore';
+import { usePeopleStore } from '../../shared/peopleStore';
 import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
 
 export type PersonAvatarProps = {
