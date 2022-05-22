@@ -1,6 +1,6 @@
 import { createContext, ParentComponent, useContext } from 'solid-js';
 import { createStore, produce } from 'solid-js/store';
-import { getNormalizedPeople } from './utils';
+import { getNormalizedPeople, sleep } from './utils';
 
 const storeContext = createContext();
 
@@ -30,6 +30,15 @@ export const PeopleStoreProvider: ParentComponent = (p) => {
           Object.assign(draft.friendsStatusMap, friends);
           Object.assign(draft.peopleDetailsMap, peopleDetailsMap);
           draft.peopleIdList.push(...peopleIdList);
+        }),
+      );
+    },
+    addFriend(personId) {
+      setState(
+        produce(async (draft) => {
+          draft.friendsStatusMap[personId] = 'requested';
+          await sleep(2000);
+          draft.friendsStatusMap[personId] = 'accepted';
         }),
       );
     },

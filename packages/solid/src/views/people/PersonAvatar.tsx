@@ -13,7 +13,7 @@ const defaultProps = { class: '' } as const;
 const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
   const p = mergeProps(defaultProps, ip);
   const [searchParams] = useSearchParams();
-  const [state] = usePeopleStore();
+  const [state, methods] = usePeopleStore();
 
   function person() {
     return state.peopleDetailsMap[p.personId];
@@ -26,6 +26,10 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
     return `/people/${p.personId}?${qs}`;
   }
 
+  function handleAddFriend() {
+    methods.addFriend(p.personId);
+  }
+
   return (
     <div class={personAvatarStyles.avatarWrapper}>
       <Link href={personLink()} class={personAvatarStyles.avatarLink}>
@@ -36,7 +40,7 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
         />
         <span class={personAvatarStyles.avatarName}>{person().name}</span>
       </Link>
-      <button type="button" class={personAvatarStyles.addBtn}></button>
+      <button type="button" class={personAvatarStyles.addBtn} onClick={handleAddFriend}></button>
     </div>
   );
 };
