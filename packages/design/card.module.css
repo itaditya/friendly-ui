@@ -1,7 +1,14 @@
 .card {
   background-color: hsl(228deg 5% 21%);
   border-radius: 6px;
-  padding: 20px 40px;
+  padding: 30px 20px;
+}
+
+.card[data-variant="full"] {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: min-content;
+  gap: 20px;
 }
 
 .card[data-variant="split"] {
