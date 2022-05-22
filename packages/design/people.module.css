@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.headerAction {
+  font-size: 0.9rem;
+}
+
+.avatarGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: min-content;
+  gap: 30px 20px;
+}

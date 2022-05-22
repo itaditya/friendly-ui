@@ -1,6 +1,6 @@
 import { mergeProps, ParentComponent } from 'solid-js';
 import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
-import { Link } from 'solid-app-router';
+import { Link, useSearchParams } from 'solid-app-router';
 
 export type PersonAvatarProps = {
   personId: string;
@@ -12,11 +12,19 @@ const defaultProps = { class: '' } as const;
 
 const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
   const p = mergeProps(defaultProps, ip);
+  const [searchParams] = useSearchParams();
+
+  function getHref() {
+    const urlParams = new URLSearchParams(searchParams);
+    const qs = urlParams.toString();
+
+    return `/people/${p.personId}?${qs}`;
+  }
 
   return (
     <div class={personAvatarStyles.avatarWrapper}>
       <Link
-        href={`/people/${p.personId}`}
+        href={getHref()}
         class={personAvatarStyles.avatarLink}
       >
         <img

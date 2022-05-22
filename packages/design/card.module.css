@@ -4,13 +4,6 @@
   padding: 30px 20px;
 }
 
-.card[data-variant="full"] {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: min-content;
-  gap: 30px 20px;
-}
-
 .card[data-variant="split"] {
   display: flex;
   flex-direction: column;
