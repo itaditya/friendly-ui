@@ -1,0 +1,10 @@
+.card {
+  background-color: hsl(228deg 5% 21%);
+  border-radius: 6px;
+}
+
+.card[data-variant="split"] {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  height: 100px;
+}
