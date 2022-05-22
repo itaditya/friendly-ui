@@ -42,6 +42,13 @@ export const PeopleStoreProvider: ParentComponent = (p) => {
         }),
       );
     },
+    removeFriend(personId) {
+      setState(
+        produce(async (draft) => {
+          delete draft.friendsStatusMap[personId];
+        }),
+      );
+    },
   };
 
   const store = [state, methods];

@@ -9,7 +9,7 @@
   gap: 10px;
 }
 
-.avatarLink:focus-visible > .avatar {
+.avatarLink:focus-visible>.avatar {
   outline: 2px solid hsl(217deg 91% 60%);
 }
 
@@ -41,7 +41,11 @@
   transition: all 0.2s;
 }
 
-.addBtn:hover {
+.addBtn[data-status="requested"] {
+  background-color: hsl(215deg 20% 65%);
+}
+
+.addBtn:not([data-status="requested"]):hover {
   transform: scale(1.1);
 }
 
@@ -54,6 +58,14 @@
   color: hsl(217deg 91% 60%);
 }
 
-.addBtn:focus-visible > .addBtnIcon {
+.addBtn[data-status="requested"]>.addBtnIcon {
+  color: hsl(215deg 16% 47%);
+}
+
+.addBtn[data-status="accepted"]>.addBtnIcon {
+  color: hsl(0deg 84% 60%);
+}
+
+.addBtn:focus-visible>.addBtnIcon {
   color: hsl(214deg 100% 97%);
 }

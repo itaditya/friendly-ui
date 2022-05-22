@@ -1,7 +1,11 @@
-import { mergeProps, ParentComponent } from 'solid-js';
+import { mergeProps, ParentComponent, Switch, Match } from 'solid-js';
 import { Link, useSearchParams } from 'solid-app-router';
 import { usePeopleStore } from '../../shared/peopleStore';
-import { AddFriendIcon } from '../../shared/Icons';
+import {
+  AddFriendIcon,
+  PendingRequestIcon,
+  RemoveFriendIcon,
+} from '../../shared/Icons';
 import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
 
 export type PersonAvatarProps = {
@@ -27,9 +31,27 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
     return `/people/${p.personId}?${qs}`;
   }
 
-  function handleAddFriend() {
+  function friendStatus() {
+    return state.friendsStatusMap[p.personId];
+  }
+
+  function handleAddFriend(event) {
+    if (friendStatus() === 'requested') {
+      event.preventDefault();
+      return;
+    }
+
+    if (friendStatus() === 'accepted') {
+      methods.removeFriend(p.personId);
+      return;
+    }
+
     methods.addFriend(p.personId);
   }
+
+  const commonBtnIconProps = {
+    class: personAvatarStyles.addBtnIcon,
+  };
 
   return (
     <div class={personAvatarStyles.avatarWrapper}>
@@ -41,8 +63,22 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
         />
         <span class={personAvatarStyles.avatarName}>{person().name}</span>
       </Link>
-      <button type="button" class={personAvatarStyles.addBtn} onClick={handleAddFriend}>
-        <AddFriendIcon class={personAvatarStyles.addBtnIcon} />
+      <button
+        type="button"
+        class={personAvatarStyles.addBtn}
+        data-status={friendStatus()}
+        tabIndex={friendStatus() === 'requested' ? -1 : undefined}
+        aria-disabled={friendStatus() === 'requested'}
+        onClick={handleAddFriend}
+      >
+        <Switch fallback={<AddFriendIcon {...commonBtnIconProps} />}>
+          <Match when={friendStatus() === 'requested'}>
+            <PendingRequestIcon {...commonBtnIconProps} />
+          </Match>
+          <Match when={friendStatus() === 'accepted'}>
+            <RemoveFriendIcon {...commonBtnIconProps} />
+          </Match>
+        </Switch>
       </button>
     </div>
   );
