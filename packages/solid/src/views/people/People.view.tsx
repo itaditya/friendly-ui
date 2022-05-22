@@ -14,11 +14,11 @@ const PeopleView: Component = (p) => {
         />
         <PersonAvatar
           personId="2"
-          src="https://devadi.netlify.app/dp_twitter.png"
+          src="https://unavatar.io/kikobeats"
         />
         <PersonAvatar
           personId="3"
-          src="https://devadi.netlify.app/dp_twitter.png"
+          src="https://unavatar.io/github/mdo"
         />
         <PersonAvatar
           personId="4"

@@ -14,13 +14,19 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
   const p = mergeProps(defaultProps, ip);
 
   return (
-    <Link href={`/people/${p.personId}`}>
-      <img
-        src={p.src}
-        alt="remember to fill this"
-        class={`${personAvatarStyles.avatar} ${p.class}`}
-      />
-    </Link>
+    <div class={personAvatarStyles.avatarWrapper}>
+      <Link
+        href={`/people/${p.personId}`}
+        class={personAvatarStyles.avatarLink}
+      >
+        <img
+          src={p.src}
+          alt="remember to fill this"
+          class={`${personAvatarStyles.avatar} ${p.class}`}
+        />
+      </Link>
+      <button type="button" class={personAvatarStyles.addBtn}></button>
+    </div>
   );
 };
 
