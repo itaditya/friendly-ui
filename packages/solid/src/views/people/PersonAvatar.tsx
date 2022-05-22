@@ -19,7 +19,7 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
     return state.peopleDetailsMap[p.personId];
   }
 
-  function getHref() {
+  function personLink() {
     const urlParams = new URLSearchParams(searchParams);
     const qs = urlParams.toString();
 
@@ -28,10 +28,7 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
 
   return (
     <div class={personAvatarStyles.avatarWrapper}>
-      <Link
-        href={getHref()}
-        class={personAvatarStyles.avatarLink}
-      >
+      <Link href={personLink()} class={personAvatarStyles.avatarLink}>
         <img
           src={person().imageUrl}
           alt=""

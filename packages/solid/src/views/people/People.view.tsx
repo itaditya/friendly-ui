@@ -1,4 +1,4 @@
-import { Component, For, Show, onMount } from 'solid-js';
+import { Component, For, Show, createRenderEffect } from 'solid-js';
 import {
   Link,
   Outlet,
@@ -9,9 +9,9 @@ import {
 import Card from './Card';
 import PersonAvatar from './PersonAvatar';
 import { usePeopleStore } from '../../../shared/peopleStore';
+import { createPeopleList } from './createPeopleList';
 import layoutStyles from '@friendly-ui/design/layout.module.css';
 import peopleStyles from '@friendly-ui/design/people.module.css';
-import { createPeopleList } from './createPeopleList';
 
 const PeopleView: Component = () => {
   const [searchParams] = useSearchParams();
@@ -40,7 +40,7 @@ const PeopleView: Component = () => {
     return url;
   }
 
-  onMount(() => {
+  createRenderEffect(() => {
     const data = routeData();
     methods.setData(data);
   });

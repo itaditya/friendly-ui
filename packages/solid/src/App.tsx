@@ -6,6 +6,7 @@ import { PeopleStoreProvider } from '../shared/peopleStore';
 const AppShellView = lazy(() => import('./views/appShell/AppShell.view'));
 const PeopleShellView = lazy(() => import('./views/people/People.view'));
 const PersonDetailView = lazy(() => import('./views/PersonDetail.view'));
+const HomeView = lazy(() => import('./views/Home.view'));
 
 const routes: Array<RouteDefinition> = [
   {
@@ -29,7 +30,7 @@ const routes: Array<RouteDefinition> = [
       },
       {
         path: '/',
-        element: <h2>Home</h2>,
+        component: HomeView,
       },
     ],
   },

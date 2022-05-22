@@ -1,4 +1,4 @@
-import { Component } from 'solid-js';
+import { Component, Suspense } from 'solid-js';
 import { Outlet } from 'solid-app-router';
 import Search from './Search';
 import layoutStyles from '@friendly-ui/design/layout.module.css';
@@ -7,7 +7,9 @@ const AppShellView: Component = () => {
   return (
     <div class={layoutStyles.layoutApp}>
       <Search />
-      <Outlet />
+      <Suspense fallback="loading">
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
