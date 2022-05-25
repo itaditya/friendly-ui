@@ -3,19 +3,20 @@ import { RouteDefinition, useRoutes } from 'solid-app-router';
 import PeopleData from './views/people/People.data';
 import { PeopleStoreProvider } from './shared/peopleStore';
 
-const AppShellView = lazy(() => import('./views/appShell/AppShell.view'));
-const PeopleShellView = lazy(() => import('./views/people/People.view'));
-const PersonDetailView = lazy(() => import('./views/PersonDetail.view'));
+const RootShell = lazy(() => import('./views/root/Root.shell'));
+const PeopleShell = lazy(() => import('./views/people/People.shell'));
+const PeopleView = lazy(() => import('./views/people/People.view'));
+const PersonDetailView = lazy(() => import('./views/people/PersonDetail.view'));
 const HomeView = lazy(() => import('./views/Home.view'));
 
 const routes: Array<RouteDefinition> = [
   {
     path: '/',
-    component: AppShellView,
+    component: RootShell,
     children: [
       {
         path: '/people',
-        component: PeopleShellView,
+        component: PeopleShell,
         data: PeopleData,
         children: [
           {
@@ -24,7 +25,7 @@ const routes: Array<RouteDefinition> = [
           },
           {
             path: '/',
-            element: <h2>Select a person to see their details here</h2>,
+            component: PeopleView,
           },
         ],
       },

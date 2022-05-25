@@ -1,7 +1,7 @@
 import { Component } from 'solid-js';
 import { Link } from 'solid-app-router';
 
-const Home: Component = (p) => {
+const Home: Component = () => {
   return (
     <div>
       <h2>Home</h2>

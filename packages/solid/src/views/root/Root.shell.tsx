@@ -3,7 +3,7 @@ import { Outlet } from 'solid-app-router';
 import Search from './Search';
 import layoutStyles from '@friendly-ui/design/layout.module.css';
 
-const AppShellView: Component = () => {
+const RootShell: Component = () => {
   return (
     <div class={layoutStyles.layoutApp}>
       <Search />
@@ -14,4 +14,4 @@ const AppShellView: Component = () => {
   );
 };
 
-export default AppShellView;
+export default RootShell;
