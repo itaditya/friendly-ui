@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar {
+  display: block;
+  width: 140px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.addBtn {
+  border: 2px solid hsl(0deg 0% 100%);
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-weight: bold;
+  transition: 0.2s ease-in;
+}
+
+.addBtn:hover {
+  color: hsl(217deg 91% 60%);
+  background-color: hsl(0deg 0% 100%);
+}

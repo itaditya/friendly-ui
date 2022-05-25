@@ -20,3 +20,11 @@
   grid-auto-rows: min-content;
   gap: 30px 20px;
 }
+
+.selectPersonWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
