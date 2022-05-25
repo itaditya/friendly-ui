@@ -18,7 +18,7 @@ const PersonDetailView: Component = () => {
       </div>
       <div class={personDetailStyles.bio}>
         <h2 class={personDetailStyles.name}>{person().name}</h2>
-        <p>Hello There</p>
+        <p>{person().description}</p>
         <button class={personDetailStyles.addBtn} type="button">
           Add Friend
         </button>

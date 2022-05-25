@@ -2,26 +2,31 @@
   {
     "id": "aditya-agarwal",
     "name": "Aditya",
+    "description": "this is a boring placeholder description",
     "imageUrl": "https://devadi.netlify.app/dp_twitter.png"
   },
   {
     "id": "kiko-beats",
     "name": "Kiko Beats",
+    "description": "this is a boring placeholder description",
     "imageUrl": "https://unavatar.io/kikobeats"
   },
   {
     "id": "jake-peralta",
     "name": "Jake Peralta",
+    "description": "this is a boring placeholder description",
     "imageUrl": "https://unavatar.io/github/mdo"
   },
   {
     "id": "rosa-diaz",
     "name": "Rosa Diaz",
+    "description": "this is a boring placeholder description",
     "imageUrl": "https://unavatar.io/kikobeats"
   },
   {
     "id": "sam-tarly",
     "name": "Sam Tarly",
+    "description": "this is a boring placeholder description",
     "imageUrl": "https://unavatar.io/github/mdo"
   }
 ]
