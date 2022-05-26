@@ -1,6 +1,6 @@
 import { mergeProps, ParentComponent, Switch, Match } from 'solid-js';
 import { Link, useSearchParams } from 'solid-app-router';
-import { usePeopleStore } from '../../shared/peopleStore';
+import { useFriendsStore } from '../../shared/friendsStore';
 import {
   AddFriendIcon,
   PendingRequestIcon,
@@ -9,7 +9,7 @@ import {
 import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
 
 export type PersonAvatarProps = {
-  personId: string;
+  person: Record<string, string>;
   class?: string;
 };
 
@@ -18,21 +18,17 @@ const defaultProps = { class: '' } as const;
 const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
   const p = mergeProps(defaultProps, ip);
   const [searchParams] = useSearchParams();
-  const [state, methods] = usePeopleStore();
-
-  function person() {
-    return state.peopleDetailsMap[p.personId];
-  }
+  const [friends, methods] = useFriendsStore();
 
   function personLink() {
     const urlParams = new URLSearchParams(searchParams);
     const qs = urlParams.toString();
 
-    return `/people/${p.personId}?${qs}`;
+    return `/people/${p.person.id}?${qs}`;
   }
 
   function friendStatus() {
-    return state.friendsStatusMap[p.personId];
+    return friends.statusMap[p.person.id];
   }
 
   function handleAddFriend(event) {
@@ -42,11 +38,11 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
     }
 
     if (friendStatus() === 'accepted') {
-      methods.removeFriend(p.personId);
+      methods.removeFriend(p.person.id);
       return;
     }
 
-    methods.addFriend(p.personId);
+    methods.addFriend(p.person.id);
   }
 
   const commonBtnIconProps = {
@@ -57,11 +53,11 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
     <div class={personAvatarStyles.avatarWrapper}>
       <Link href={personLink()} class={personAvatarStyles.avatarLink}>
         <img
-          src={person().imageUrl}
+          src={p.person.imageUrl}
           alt=""
           class={`${personAvatarStyles.avatar} ${p.class}`}
         />
-        <span class={personAvatarStyles.avatarName}>{person().name}</span>
+        <span class={personAvatarStyles.avatarName}>{p.person.name}</span>
       </Link>
       <button
         type="button"

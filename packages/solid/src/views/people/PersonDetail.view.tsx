@@ -1,14 +1,14 @@
 import { Component } from 'solid-js';
-import { useParams } from 'solid-app-router';
-import { usePeopleStore } from '../../shared/peopleStore';
+import { useParams, useRouteData } from 'solid-app-router';
 import personDetailStyles from '@friendly-ui/design/person_detail.module.css';
 
 const PersonDetailView: Component = () => {
   const params = useParams();
-  const [state] = usePeopleStore();
+  const routeData = useRouteData();
 
   function person() {
-    return state.peopleDetailsMap[params.id];
+    const fetchedPeople = routeData();
+    return fetchedPeople.find(person => person.id === params.id);
   }
 
   return (

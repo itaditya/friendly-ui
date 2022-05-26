@@ -1,7 +1,7 @@
 import { lazy, Component } from 'solid-js';
 import { RouteDefinition, useRoutes } from 'solid-app-router';
 import PeopleData from './views/people/People.data';
-import { PeopleStoreProvider } from './shared/peopleStore';
+import { FriendsStoreProvider } from './shared/friendsStore';
 
 const RootShell = lazy(() => import('./views/root/Root.shell'));
 const PeopleShell = lazy(() => import('./views/people/People.shell'));
@@ -41,9 +41,9 @@ const App: Component = () => {
   const Routes = useRoutes(routes);
 
   return (
-    <PeopleStoreProvider>
+    <FriendsStoreProvider>
       <Routes />
-    </PeopleStoreProvider>
+    </FriendsStoreProvider>
   );
 };
 
