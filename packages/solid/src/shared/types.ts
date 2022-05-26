@@ -40,6 +40,7 @@ export type SearchStateStore = Store<SearchState>;
 
 export interface SearchMethods {
   runSearch: (query: SearchQuery) => void;
+  clearSearch: () => void;
 }
 
 export type SearchStore = [SearchStateStore, SearchMethods];

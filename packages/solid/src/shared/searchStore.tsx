@@ -32,6 +32,9 @@ export const SearchStoreProvider: ParentComponent = (p) => {
         }),
       );
     },
+    clearSearch() {
+      methods.runSearch('');
+    },
   };
 
   const store: SearchStore = [search, methods];

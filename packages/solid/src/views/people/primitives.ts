@@ -2,6 +2,7 @@ import { createMemo } from 'solid-js';
 import { useRouteData, useSearchParams, useMatch } from 'solid-app-router';
 import { useFriendsStore } from '_shared/friendsStore';
 import { PeopleAccessor } from '_shared/types';
+import { useSearchStore } from '_shared/searchStore';
 
 export const usePeopleRouteData = () => {
   const routeData = useRouteData<PeopleAccessor>();
@@ -10,18 +11,29 @@ export const usePeopleRouteData = () => {
 
 export function createPeopleList() {
   const [friends] = useFriendsStore();
+  const [search] = useSearchStore();
   const routeData = usePeopleRouteData();
   const [searchParams] = useSearchParams();
 
+  const searchedPeople = createMemo(() => {
+    const query = search.query.toLowerCase();
+    const fetchedPeople = routeData();
+    
+    return fetchedPeople.filter(person => {
+      const name = person.name.toLowerCase();
+      return name.includes(query);
+    });
+  })
+
   const peopleList = createMemo(() => {
     const isFilterFriends = searchParams.filter === 'friends';
-    const fetchedPeople = routeData();
+    const people = searchedPeople();
 
     if (!isFilterFriends) {
-      return fetchedPeople;
+      return people;
     }
 
-    return fetchedPeople.filter(
+    return people.filter(
       (person) => friends.statusMap[person.id] === 'accepted',
     );
   });
