@@ -1,11 +1,11 @@
 import { mergeProps, ParentComponent, Switch, Match } from 'solid-js';
 import { Link, useSearchParams } from 'solid-app-router';
-import { useFriendsStore } from '../../shared/friendsStore';
+import { useFriendsStore } from '_shared/friendsStore';
 import {
   AddFriendIcon,
   PendingRequestIcon,
   RemoveFriendIcon,
-} from '../../shared/Icons';
+} from '_shared/Icons';
 import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
 
 export type PersonAvatarProps = {

@@ -1,6 +1,6 @@
 import { createMemo } from 'solid-js';
 import { useRouteData, useSearchParams, useMatch } from 'solid-app-router';
-import { useFriendsStore } from '../../shared/friendsStore';
+import { useFriendsStore } from '_shared/friendsStore';
 
 export function createPeopleList() {
   const [friends] = useFriendsStore();
