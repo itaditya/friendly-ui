@@ -1,10 +1,16 @@
 import { createMemo } from 'solid-js';
 import { useRouteData, useSearchParams, useMatch } from 'solid-app-router';
 import { useFriendsStore } from '_shared/friendsStore';
+import { PeopleAccessor } from '_shared/types';
+
+export const usePeopleRouteData = () => {
+  const routeData = useRouteData<PeopleAccessor>();
+  return routeData;
+};
 
 export function createPeopleList() {
   const [friends] = useFriendsStore();
-  const routeData = useRouteData();
+  const routeData = usePeopleRouteData();
   const [searchParams] = useSearchParams();
 
   const peopleList = createMemo(() => {

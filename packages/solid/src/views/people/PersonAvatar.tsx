@@ -6,10 +6,11 @@ import {
   PendingRequestIcon,
   RemoveFriendIcon,
 } from '_shared/Icons';
+import { Person } from '_shared/types';
 import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
 
 export type PersonAvatarProps = {
-  person: Record<string, string>;
+  person: Person;
   class?: string;
 };
 
@@ -31,7 +32,7 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
     return friends.statusMap[p.person.id];
   }
 
-  function handleAddFriend(event) {
+  function handleAddFriend(event: MouseEvent) {
     if (friendStatus() === 'requested') {
       event.preventDefault();
       return;

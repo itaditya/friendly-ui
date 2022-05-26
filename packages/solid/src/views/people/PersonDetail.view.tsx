@@ -1,14 +1,21 @@
 import { Component } from 'solid-js';
-import { useParams, useRouteData } from 'solid-app-router';
+import { useParams } from 'solid-app-router';
+import { usePeopleRouteData } from './primitives';
 import personDetailStyles from '@friendly-ui/design/person_detail.module.css';
 
 const PersonDetailView: Component = () => {
   const params = useParams();
-  const routeData = useRouteData();
+  const routeData = usePeopleRouteData();
 
   function person() {
     const fetchedPeople = routeData();
-    return fetchedPeople.find(person => person.id === params.id);
+    const foundPerson = fetchedPeople.find((person) => person.id === params.id);
+
+    if (!foundPerson) {
+      throw new Error('No person found');
+    }
+
+    return foundPerson;
   }
 
   return (

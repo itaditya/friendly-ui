@@ -1,8 +1,9 @@
 import { createContext, ParentComponent, useContext } from 'solid-js';
 import { createStore, produce } from 'solid-js/store';
 import { sleep } from './utils';
+import { FriendsMethods, FriendsStore } from './types';
 
-const storeContext = createContext();
+const storeContext = createContext<FriendsStore>();
 
 export function useFriendsStore() {
   const store = useContext(storeContext);
@@ -19,7 +20,7 @@ export const FriendsStoreProvider: ParentComponent = (p) => {
     statusMap: {},
   });
 
-  const methods = {
+  const methods: FriendsMethods = {
     addFriend(personId) {
       setFriends(
         produce(async (draft) => {
@@ -38,7 +39,7 @@ export const FriendsStoreProvider: ParentComponent = (p) => {
     },
   };
 
-  const store = [friends, methods];
+  const store: FriendsStore = [friends, methods];
 
   return <storeContext.Provider value={store} children={p.children} />;
 };
