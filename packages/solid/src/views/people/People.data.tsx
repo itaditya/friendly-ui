@@ -1,4 +1,5 @@
 import { createResource } from 'solid-js';
+import { People } from '_shared/types';
 
 async function fetchPeople() {
   const res = await fetch('/api/people.json');
@@ -7,7 +8,9 @@ async function fetchPeople() {
 }
 
 function PeopleData() {
-  const [people] = createResource(fetchPeople);
+  const [people] = createResource<People>(fetchPeople, {
+    initialValue: [],
+  });
   return people;
 }
 

@@ -18,12 +18,12 @@ export function createPeopleList() {
   const searchedPeople = createMemo(() => {
     const query = search.query.toLowerCase();
     const fetchedPeople = routeData();
-    
-    return fetchedPeople.filter(person => {
+
+    return fetchedPeople.filter((person) => {
       const name = person.name.toLowerCase();
       return name.includes(query);
     });
-  })
+  });
 
   const peopleList = createMemo(() => {
     const isFilterFriends = searchParams.filter === 'friends';
