@@ -31,7 +31,12 @@ const PeopleView: Component = () => {
           </For>
         </main>
       </section>
-      <section class={`${peopleStyles.detailCard} ${peopleStyles.card}`}>
+      <section
+        class={`${peopleStyles.detailCard} ${peopleStyles.card}`}
+        use:autoAnimate={{
+          duration: 100,
+        }}
+      >
         <Outlet />
       </section>
     </>
