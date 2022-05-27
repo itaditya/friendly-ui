@@ -30,7 +30,7 @@ const PersonDetailView: Component = () => {
         </div>
         <div class={personDetailStyles.bio}>
           <h2 class={personDetailStyles.name}>{name}</h2>
-          <p>{description}</p>
+          <p class={personDetailStyles.description}>{description}</p>
           <button class={personDetailStyles.addBtn} type="button">
             Add Friend
           </button>
