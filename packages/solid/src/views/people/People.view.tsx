@@ -3,8 +3,8 @@ import peopleStyles from '@friendly-ui/design/people.module.css';
 
 const PeopleView: Component = () => {
   return (
-    <div class={peopleStyles.selectPersonWrapper}>
-      <h2>Select a person to see their details here</h2>
+    <div class={peopleStyles.detailMsg}>
+      Select a person to see their details here
     </div>
   );
 };

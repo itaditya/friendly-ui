@@ -1,4 +1,4 @@
-import { Component, For, Show } from 'solid-js';
+import { Component, ErrorBoundary, For, Show } from 'solid-js';
 import { Link, Outlet, useSearchParams } from 'solid-app-router';
 import { autoAnimate } from 'solid-auto-animate';
 import PersonAvatar from './PersonAvatar';
@@ -10,6 +10,10 @@ const PeopleView: Component = () => {
   const peopleList = createPeopleList();
   const headerHref = createHeaderHref();
   autoAnimate; // to prevent TS from removing the directive
+
+  const detailErrorContent = (
+    <div class={peopleStyles.detailMsg}>No details found for this person</div>
+  );
 
   return (
     <>
@@ -37,7 +41,9 @@ const PeopleView: Component = () => {
           duration: 100,
         }}
       >
-        <Outlet />
+        <ErrorBoundary fallback={detailErrorContent}>
+          <Outlet />
+        </ErrorBoundary>
       </section>
     </>
   );
