@@ -20,34 +20,33 @@ const PersonDetailView: Component = () => {
     return foundPerson;
   }
 
-  function renderAvatar() {
-    const { imageUrl } = person();
-
-    return (
-      <img src={person().imageUrl} alt="" class={personDetailStyles.avatar} />
-    );
-  }
-
-  function renderBio() {
-    const { name, description } = person();
+  function renderPerson() {
+    const { name, description, imageUrl } = person();
 
     return (
       <>
-        <h2 class={personDetailStyles.name}>{name}</h2>
-        <p>{description}</p>
-        <button class={personDetailStyles.addBtn} type="button">
-          Add Friend
-        </button>
+        <div>
+          <img src={imageUrl} alt="" class={personDetailStyles.avatar} />
+        </div>
+        <div class={personDetailStyles.bio}>
+          <h2 class={personDetailStyles.name}>{name}</h2>
+          <p>{description}</p>
+          <button class={personDetailStyles.addBtn} type="button">
+            Add Friend
+          </button>
+        </div>
       </>
     );
   }
 
   return (
-    <div class={personDetailStyles.wrapper}>
-      <div use:autoAnimate>{renderAvatar()}</div>
-      <div class={personDetailStyles.bio} use:autoAnimate>
-        {renderBio()}
-      </div>
+    <div
+      class={personDetailStyles.wrapper}
+      use:autoAnimate={{
+        duration: 100,
+      }}
+    >
+      {renderPerson()}
     </div>
   );
 };
