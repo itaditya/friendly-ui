@@ -37,6 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   border-radius: 100%;
   aspect-ratio: 1;
   background-color: hsl(214deg 100% 97%);

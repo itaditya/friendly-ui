@@ -12,6 +12,14 @@
 
 .headerAction {
   font-size: 0.9rem;
+  padding: 5px 10px;
+  border: 1px solid rgb(106, 101, 101);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.activeFilter {
+  background-color: hsl(0deg 84% 60%);
 }
 
 .avatarGrid {

@@ -9,6 +9,7 @@
 
 .demoLink {
   border: 2px solid hsl(0deg 0% 100%);
+  cursor: pointer;
   font-size: 2rem;
   padding: 10px 20px;
   text-align: center;
