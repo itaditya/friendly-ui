@@ -9,7 +9,7 @@
   gap: 10px;
 }
 
-.avatarLink:focus-visible>.avatar {
+.avatarLink:focus-visible > .avatar {
   outline: 2px solid hsl(217deg 91% 60%);
 }
 
@@ -43,11 +43,12 @@
   transition: all 0.2s;
 }
 
-.addBtn[data-status="requested"] {
+.addBtn[data-status='requested'] {
   background-color: hsl(215deg 20% 65%);
+  pointer-events: none;
 }
 
-.addBtn:not([data-status="requested"]):hover {
+.addBtn:hover {
   transform: scale(1.1);
 }
 
@@ -55,19 +56,27 @@
   background-color: hsl(217deg 91% 60%);
 }
 
+.addBtn[data-status='accepted']:focus-visible {
+  background-color: hsl(0deg 0% 0%);
+}
+
 .addBtnIcon {
   font-size: 1.5rem;
   color: hsl(217deg 91% 60%);
 }
 
-.addBtn[data-status="requested"]>.addBtnIcon {
+.addBtn[data-status='requested'] > .addBtnIcon {
   color: hsl(215deg 16% 47%);
 }
 
-.addBtn[data-status="accepted"]>.addBtnIcon {
+.addBtn[data-status='accepted'] > .addBtnIcon {
   color: hsl(0deg 84% 60%);
 }
 
-.addBtn:focus-visible>.addBtnIcon {
+.addBtn:focus-visible > .addBtnIcon {
   color: hsl(214deg 100% 97%);
+}
+
+.addBtn[data-status='accepted']:focus-visible > .addBtnIcon {
+  color: rgb(243, 135, 135);
 }
