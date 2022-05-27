@@ -1,5 +1,5 @@
 import { Component } from 'solid-js';
-import { useParams } from 'solid-app-router';
+import { Navigate, useParams } from 'solid-app-router';
 import { autoAnimate } from 'solid-auto-animate';
 import { usePeopleRouteData } from './primitives';
 import personDetailStyles from '@friendly-ui/design/person_detail.module.css';
@@ -9,19 +9,20 @@ const PersonDetailView: Component = () => {
   const routeData = usePeopleRouteData();
   autoAnimate; // to prevent TS from removing the directive
 
-  function person() {
+  function renderPerson() {
     const fetchedPeople = routeData();
-    const foundPerson = fetchedPeople.find((person) => person.id === params.id);
 
-    if (!foundPerson) {
-      throw new Error('No person found');
+    if (fetchedPeople.length === 0) {
+      return null;
     }
 
-    return foundPerson;
-  }
+    const person = fetchedPeople.find((person) => person.id === params.id);
 
-  function renderPerson() {
-    const { name, description, imageUrl } = person();
+    if (!person) {
+      return <Navigate href="/people" />;
+    }
+
+    const { name, description, imageUrl } = person;
 
     return (
       <>
@@ -43,7 +44,7 @@ const PersonDetailView: Component = () => {
     <div
       class={personDetailStyles.wrapper}
       use:autoAnimate={{
-        duration: 100,
+        duration: 200,
       }}
     >
       {renderPerson()}

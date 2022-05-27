@@ -25,7 +25,7 @@ const routes: Array<RouteDefinition> = [
             component: PersonDetailView,
           },
           {
-            path: '/',
+            path: '/*all',
             component: PeopleView,
           },
         ],
