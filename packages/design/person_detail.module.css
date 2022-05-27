@@ -26,13 +26,14 @@
 .description {
   font-size: 0.95rem;
   color: rgb(210, 206, 206);
+  margin-block-end: 10px;
 }
 
 .addBtn {
   border: 2px solid hsl(0deg 0% 100%);
   border-radius: 4px;
   padding: 5px 10px;
-  margin-block-start: 10px;
+  white-space: nowrap;
   font-weight: bold;
   transition: 0.2s ease-in;
 }
