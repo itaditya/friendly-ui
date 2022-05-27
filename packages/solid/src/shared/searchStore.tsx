@@ -31,7 +31,7 @@ export const SearchStoreProvider: ParentComponent = (p) => {
           draft.query = query;
 
           if (lastQuery) {
-            draft.history.push(lastQuery);
+            draft.history.splice(0, 0, lastQuery);
           }
         }),
       );

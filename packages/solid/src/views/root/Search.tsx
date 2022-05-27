@@ -55,7 +55,7 @@ const Search: Component = () => {
       <Show when={show()}>
         <ul class={searchStyles.history}>
           <For each={search.history} fallback={<li>No Search History</li>}>
-            {(searchRecord) => <li>{searchRecord}</li>}
+            {(searchRecord) => <li class={searchStyles.historyItem}>{searchRecord}</li>}
           </For>
         </ul>
       </Show>

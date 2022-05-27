@@ -27,7 +27,7 @@ export const FriendsStoreProvider: ParentComponent = (p) => {
       setFriends(
         produce(async (draft) => {
           draft.statusMap[personId] = 'requested';
-          await sleep(2000);
+          await sleep(800);
           draft.statusMap[personId] = 'accepted';
         }),
       );

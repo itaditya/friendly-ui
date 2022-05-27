@@ -10,7 +10,8 @@
   flex: 1;
 }
 
-.historyBtn, .resetBtn {
+.historyBtn,
+.resetBtn {
   position: absolute;
   display: flex;
 }
@@ -27,6 +28,14 @@
 .history {
   list-style: none;
   display: flex;
-  gap: 5px;
+  gap: 10px;
   overflow: hidden;
+  margin-block-start: 5px;
+  padding-block-end: 5px;
+}
+
+.historyItem:not(:last-child) {
+  border-right: 1px solid rgb(105, 105, 105);
+  padding-right: 10px;
+  line-height: 1;
 }
