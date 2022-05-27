@@ -1,9 +1,9 @@
-import { Component, For } from 'solid-js';
+import peopleStyles from '@friendly-ui/design/people.module.css';
 import { Link, Outlet, useSearchParams } from 'solid-app-router';
 import { autoAnimate } from 'solid-auto-animate';
+import { Component, For } from 'solid-js';
 import PersonAvatar from './PersonAvatar';
 import { createHeaderHref, createPeopleList } from './primitives';
-import peopleStyles from '@friendly-ui/design/people.module.css';
 
 const PeopleView: Component = () => {
   const [searchParams] = useSearchParams();

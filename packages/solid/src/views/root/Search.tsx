@@ -1,8 +1,8 @@
-import { Component, createSignal, Show, JSX, For } from 'solid-js';
-import { useSearchStore } from '_shared/searchStore';
-import { SearchHistoryIcon, ClearSearchIcon } from '_shared/Icons';
 import searchStyles from '@friendly-ui/design/search.module.css';
 import { autoAnimate } from 'solid-auto-animate';
+import { Component, createSignal, For, JSX, Show } from 'solid-js';
+import { ClearSearchIcon, SearchHistoryIcon } from '_shared/Icons';
+import { useSearchStore } from '_shared/searchStore';
 
 type SubmitHandler = JSX.EventHandlerUnion<HTMLFormElement, SubmitEvent>;
 

@@ -1,5 +1,5 @@
-import { Component } from 'solid-js';
 import peopleStyles from '@friendly-ui/design/people.module.css';
+import { Component } from 'solid-js';
 
 const PeopleView: Component = () => {
   return (

@@ -1,7 +1,7 @@
 import { createContext, ParentComponent, useContext } from 'solid-js';
 import { createStore, produce } from 'solid-js/store';
-import { sleep } from './utils';
 import { FriendsMethods, FriendsState, FriendsStore } from './types';
+import { sleep } from './utils';
 
 const storeContext = createContext<FriendsStore>();
 

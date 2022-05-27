@@ -1,6 +1,6 @@
-import { Component } from 'solid-js';
-import { Link } from 'solid-app-router';
 import homeStyles from '@friendly-ui/design/home.module.css';
+import { Link } from 'solid-app-router';
+import { Component } from 'solid-js';
 
 const Home: Component = () => {
   return (

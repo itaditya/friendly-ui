@@ -1,8 +1,8 @@
-import { Component, Suspense } from 'solid-js';
+import layoutStyles from '@friendly-ui/design/layout.module.css';
 import { Outlet } from 'solid-app-router';
 import { autoAnimate } from 'solid-auto-animate';
+import { Component, Suspense } from 'solid-js';
 import Search from './Search';
-import layoutStyles from '@friendly-ui/design/layout.module.css';
 
 const RootShell: Component = () => {
   autoAnimate; // to prevent TS from removing the directive
