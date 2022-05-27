@@ -1,32 +1,56 @@
 [
   {
-    "id": "aditya-agarwal",
-    "name": "Aditya",
+    "id": "sarah",
+    "name": "Sarah",
     "description": "this is a boring placeholder description",
-    "imageUrl": "https://devadi.netlify.app/dp_twitter.png"
+    "imageUrl": "/avatars/sarah.png"
   },
   {
-    "id": "kiko-beats",
-    "name": "Kiko Beats",
+    "id": "daniel",
+    "name": "Daniel",
     "description": "this is a boring placeholder description",
-    "imageUrl": "https://unavatar.io/kikobeats"
+    "imageUrl": "/avatars/daniel.png"
   },
   {
-    "id": "jake-peralta",
-    "name": "Jake Peralta",
+    "id": "julia",
+    "name": "Julia",
     "description": "this is a boring placeholder description",
-    "imageUrl": "https://unavatar.io/github/mdo"
+    "imageUrl": "/avatars/julia.png"
   },
   {
-    "id": "rosa-diaz",
-    "name": "Rosa Diaz",
+    "id": "jordan",
+    "name": "Jordan",
     "description": "this is a boring placeholder description",
-    "imageUrl": "https://unavatar.io/kikobeats"
+    "imageUrl": "/avatars/jordan.png"
   },
   {
-    "id": "sam-tarly",
-    "name": "Sam Tarly",
+    "id": "lucy",
+    "name": "Lucy",
     "description": "this is a boring placeholder description",
-    "imageUrl": "https://unavatar.io/github/mdo"
+    "imageUrl": "/avatars/lucy.png"
+  },
+  {
+    "id": "henry",
+    "name": "Henry",
+    "description": "this is a boring placeholder description",
+    "imageUrl": "/avatars/henry.png"
+  },
+  {
+    "id": "rachel",
+    "name": "Rachel",
+    "description": "this is a boring placeholder description",
+    "imageUrl": "/avatars/rachel.png"
+  },
+  {
+    "id": "terry",
+    "name": "Terry",
+    "description": "this is a boring placeholder description",
+    "imageUrl": "/avatars/terry.png"
+  },
+  {
+    "id": "susan",
+    "name": "Susan",
+    "description": "this is a boring placeholder description",
+    "imageUrl": "/avatars/susan.png"
   }
 ]
