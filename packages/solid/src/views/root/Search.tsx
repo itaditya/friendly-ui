@@ -1,11 +1,15 @@
-import { Component, createSignal, Show, JSX } from 'solid-js';
+import { Component, createSignal, Show, JSX, For } from 'solid-js';
 import { useSearchStore } from '_shared/searchStore';
+import { SearchHistoryIcon, ClearSearchIcon } from '_shared/Icons';
+import searchStyles from '@friendly-ui/design/search.module.css';
+import { autoAnimate } from 'solid-auto-animate';
 
 type SubmitHandler = JSX.EventHandlerUnion<HTMLFormElement, SubmitEvent>;
 
 const Search: Component = () => {
-  const [_search, methods] = useSearchStore();
+  const [search, methods] = useSearchStore();
   const [show, setShow] = createSignal(false);
+  autoAnimate; // to prevent TS from removing the directive
 
   const handleSubmit: SubmitHandler = (event) => {
     event.preventDefault();
@@ -23,18 +27,37 @@ const Search: Component = () => {
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit} onReset={handleReset}>
-        <input type="text" placeholder="Search" name="search" />
-        <button onClick={() => setShow((old) => !old)}>Toggle</button>
-        <button type="submit">Search</button>
-        <button type="reset">Reset</button>
+    <section use:autoAnimate>
+      <form
+        class={searchStyles.searchForm}
+        autocomplete="off"
+        onSubmit={handleSubmit}
+        onReset={handleReset}
+      >
+        <input
+          class={searchStyles.searchField}
+          type="text"
+          placeholder="Search"
+          name="search"
+          aria-label="Search"
+        />
+        <button
+          class={searchStyles.historyBtn}
+          type="button"
+          onClick={() => setShow((old) => !old)}
+        >
+          <SearchHistoryIcon />
+        </button>
+        <button class={searchStyles.resetBtn} type="reset">
+          <ClearSearchIcon />
+        </button>
       </form>
       <Show when={show()}>
-        <div>
-          <p>Recent Searches</p>
-          <br />
-        </div>
+        <ul class={searchStyles.history}>
+          <For each={search.history} fallback={<li>No Search History</li>}>
+            {(searchRecord) => <li>{searchRecord}</li>}
+          </For>
+        </ul>
       </Show>
     </section>
   );

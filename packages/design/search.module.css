@@ -1,0 +1,32 @@
+.searchForm {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchField {
+  padding-inline: 35px 30px;
+  padding-block: 10px;
+  flex: 1;
+}
+
+.historyBtn, .resetBtn {
+  position: absolute;
+  display: flex;
+}
+
+.historyBtn {
+  font-size: 1.5rem;
+}
+
+.resetBtn {
+  right: 0;
+  font-size: 1.2rem;
+}
+
+.history {
+  list-style: none;
+  display: flex;
+  gap: 5px;
+  overflow: hidden;
+}

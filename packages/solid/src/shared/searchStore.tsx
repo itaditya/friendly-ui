@@ -27,8 +27,12 @@ export const SearchStoreProvider: ParentComponent = (p) => {
       setSearch(
         produce(async (draft) => {
           const lastQuery = draft.query;
-          draft.history.push(lastQuery);
+
           draft.query = query;
+
+          if (lastQuery) {
+            draft.history.push(lastQuery);
+          }
         }),
       );
     },

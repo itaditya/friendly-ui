@@ -1,12 +1,9 @@
 .layoutApp {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 15px;
   height: 100vh;
+  padding-block-start: 10px;
   padding-inline: 20px;
   overflow: hidden;
-}
-
-.fillChild {
-  flex: 1;
 }

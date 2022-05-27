@@ -16,8 +16,8 @@ export type PersonAvatarProps = {
 
 const defaultProps = { class: '' } as const;
 
-const PersonAvatar: ParentComponent<PersonAvatarProps> = (ip) => {
-  const p = mergeProps(defaultProps, ip);
+const PersonAvatar: ParentComponent<PersonAvatarProps> = (op) => {
+  const p = mergeProps(defaultProps, op);
   const [searchParams] = useSearchParams();
   const [friends, methods] = useFriendsStore();
 

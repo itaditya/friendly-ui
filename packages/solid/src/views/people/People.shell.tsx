@@ -1,10 +1,8 @@
 import { Component, For, Show } from 'solid-js';
 import { Link, Outlet, useSearchParams } from 'solid-app-router';
 import { autoAnimate } from 'solid-auto-animate';
-import Card from './Card';
 import PersonAvatar from './PersonAvatar';
 import { createHeaderHref, createPeopleList } from './primitives';
-import layoutStyles from '@friendly-ui/design/layout.module.css';
 import peopleStyles from '@friendly-ui/design/people.module.css';
 
 const PeopleView: Component = () => {
@@ -15,7 +13,7 @@ const PeopleView: Component = () => {
 
   return (
     <>
-      <Card class={layoutStyles.fillChild}>
+      <section class={`${peopleStyles.listCard} ${peopleStyles.card}`}>
         <header class={peopleStyles.header}>
           <h4 class={peopleStyles.heading}>Connect</h4>
           <Link href={headerHref()} class={peopleStyles.headerAction}>
@@ -32,10 +30,13 @@ const PeopleView: Component = () => {
             {(person) => <PersonAvatar person={person} />}
           </For>
         </main>
-      </Card>
-      <Card variant="split">
+      </section>
+      <section
+        class={`${peopleStyles.detailCard} ${peopleStyles.card}`}
+        use:autoAnimate
+      >
         <Outlet />
-      </Card>
+      </section>
     </>
   );
 };
