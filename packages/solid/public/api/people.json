@@ -2,55 +2,55 @@
   {
     "id": "sarah",
     "name": "Sarah",
-    "description": "this is a boring placeholder description",
+    "description": "Lebanon, Asia",
     "imageUrl": "/avatars/sarah.png"
   },
   {
     "id": "daniel",
     "name": "Daniel",
-    "description": "this is a boring placeholder description",
+    "description": "Sydney, Australia",
     "imageUrl": "/avatars/daniel.png"
   },
   {
     "id": "julia",
     "name": "Julia",
-    "description": "this is a boring placeholder description",
+    "description": "California, USA",
     "imageUrl": "/avatars/julia.png"
   },
   {
     "id": "jordan",
     "name": "Jordan",
-    "description": "this is a boring placeholder description",
+    "description": "Texas, USA",
     "imageUrl": "/avatars/jordan.png"
   },
   {
     "id": "lucy",
     "name": "Lucy",
-    "description": "this is a boring placeholder description",
+    "description": "California, USA",
     "imageUrl": "/avatars/lucy.png"
   },
   {
     "id": "henry",
     "name": "Henry",
-    "description": "this is a boring placeholder description",
+    "description": "Mumbai, India",
     "imageUrl": "/avatars/henry.png"
   },
   {
     "id": "rachel",
     "name": "Rachel",
-    "description": "this is a boring placeholder description",
+    "description": "New York, USA",
     "imageUrl": "/avatars/rachel.png"
   },
   {
     "id": "terry",
     "name": "Terry",
-    "description": "this is a boring placeholder description",
+    "description": "Belmont, London",
     "imageUrl": "/avatars/terry.png"
   },
   {
     "id": "susan",
     "name": "Susan",
-    "description": "this is a boring placeholder description",
+    "description": "Costa Rica",
     "imageUrl": "/avatars/susan.png"
   }
 ]
