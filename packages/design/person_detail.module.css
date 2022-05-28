@@ -39,7 +39,26 @@
   transition: 0.2s ease-in;
 }
 
+.addBtn[data-status='requested'] {
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.addBtn[data-status='accepted'] {
+  border-color: hsl(0deg 84% 60%);
+  color: hsl(0deg 84% 60%);
+}
+
 .addBtn:hover {
   color: hsl(217deg 91% 60%);
   background-color: hsl(0deg 0% 100%);
+}
+
+.addBtn[data-status='accepted']:hover {
+  color: hsl(0deg 0% 100%);
+  background-color: hsl(0deg 84% 60%);
+}
+
+.addBtn:focus-visible {
+  transform: scale(1.1);
 }
