@@ -1,3 +1,4 @@
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import searchStyles from '@friendly-ui/design/search.module.css';
 import { FormEventHandler, useState } from 'react';
 import { ClearSearchIcon, SearchHistoryIcon } from '_shared/Icons';
@@ -8,6 +9,7 @@ type SubmitHandler = FormEventHandler<HTMLFormElement>;
 const Search = () => {
   const { history, runSearch } = useSearchStore();
   const [show, setShow] = useState(false);
+  const [wrapperRef] = useAutoAnimate<HTMLDivElement>();
 
   const handleSubmit: SubmitHandler = (event) => {
     event.preventDefault();
@@ -27,7 +29,7 @@ const Search = () => {
   const historyList = history.length === 0 ? ['No Search History'] : history;
 
   return (
-    <section>
+    <section ref={wrapperRef}>
       <form
         className={searchStyles.searchForm}
         autoComplete="off"

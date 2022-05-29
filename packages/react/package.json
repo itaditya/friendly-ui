@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formkit/auto-animate": "1.0.0-beta.1",
     "@friendly-ui/design": "workspace:*",
     "@tanstack/react-location": "^3.7.4",
     "clsx": "^1.1.1",

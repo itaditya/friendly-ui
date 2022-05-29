@@ -4,6 +4,7 @@ importers:
 
   packages/react:
     specifiers:
+      '@formkit/auto-animate': 1.0.0-beta.1
       '@friendly-ui/design': workspace:*
       '@tanstack/react-location': ^3.7.4
       '@types/react': ^18.0.0
@@ -17,6 +18,7 @@ importers:
       vite: ^2.9.9
       zustand: 4.0.0-rc.1
     dependencies:
+      '@formkit/auto-animate': 1.0.0-beta.1_react@18.1.0
       '@friendly-ui/design': link:../design
       '@tanstack/react-location': 3.7.4_ef5jwxihqo6n7gxfmzogljlgcm
       clsx: 1.1.1
@@ -302,6 +304,20 @@ packages:
       '@babel/helper-validator-identifier': 7.16.7
       to-fast-properties: 2.0.0
     dev: true
+
+  /@formkit/auto-animate/1.0.0-beta.1_react@18.1.0:
+    resolution: {integrity: sha512-I3OWOBaPZKSJL4bsooXI8kC3q7bcgibD2oML0P/Lir6MnbvUe/0/7EH8br024juvM/Ulm9C9xGx9CJUQYrOWSA==}
+    peerDependencies:
+      react: ^16.8.0
+      vue: ^3.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      react: 18.1.0
+    dev: false
 
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}

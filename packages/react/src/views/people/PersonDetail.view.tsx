@@ -1,3 +1,4 @@
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import personDetailStyles from '@friendly-ui/design/person_detail.module.css';
 import { Navigate, useMatch } from '@tanstack/react-location';
 import { ButtonHTMLAttributes, FC, MouseEventHandler } from 'react';
@@ -41,6 +42,8 @@ function PersonDetailView() {
     data: { people = [] },
   } = useMatch<LocationGenerics>();
   const { statusMap, addFriend, removeFriend } = useFriendsStore();
+  const [wrapperRef] = useAutoAnimate<HTMLDivElement>();
+  const [bioRef] = useAutoAnimate<HTMLDivElement>();
 
   const friendStatus = statusMap[id];
 
@@ -66,11 +69,11 @@ function PersonDetailView() {
   const { name, description, imageUrl } = person;
 
   return (
-    <div className={personDetailStyles.wrapper}>
+    <div className={personDetailStyles.wrapper} ref={wrapperRef} key={id}>
       <div>
         <img src={imageUrl} alt="" className={personDetailStyles.avatar} />
       </div>
-      <div className={personDetailStyles.bio}>
+      <div className={personDetailStyles.bio} ref={bioRef}>
         <h2 className={personDetailStyles.name}>{name}</h2>
         <p className={personDetailStyles.description}>{description}</p>
         <AddBtn status={friendStatus} onClick={handleClick} />

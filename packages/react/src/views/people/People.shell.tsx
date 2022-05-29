@@ -1,3 +1,4 @@
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import peopleStyles from '@friendly-ui/design/people.module.css';
 import { Link, Outlet, useSearch } from '@tanstack/react-location';
 import clsx from 'clsx';
@@ -8,6 +9,10 @@ function PeopleShell() {
   const searchParams = useSearch();
   const peopleList = usePeopleList();
   const getHeaderLink = useHeaderLink();
+  const [avatarGridRef] = useAutoAnimate<HTMLElement>();
+  const [detailCardRef] = useAutoAnimate<HTMLElement>({
+    duration: 100,
+  });
 
   return (
     <>
@@ -23,13 +28,16 @@ function PeopleShell() {
             Just Friends
           </Link>
         </header>
-        <main className={peopleStyles.avatarGrid}>
+        <main className={peopleStyles.avatarGrid} ref={avatarGridRef}>
           {peopleList.map((person) => (
             <PersonAvatar key={person.id} person={person} />
           ))}
         </main>
       </section>
-      <section className={`${peopleStyles.detailCard} ${peopleStyles.card}`}>
+      <section
+        className={`${peopleStyles.detailCard} ${peopleStyles.card}`}
+        ref={detailCardRef}
+      >
         <Outlet />
       </section>
     </>
