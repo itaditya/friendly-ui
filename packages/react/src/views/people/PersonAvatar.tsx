@@ -5,7 +5,7 @@ import { useFriendsStore } from '_shared/friendsStore';
 import {
   AddFriendIcon,
   PendingRequestIcon,
-  RemoveFriendIcon,
+  RemoveFriendIcon
 } from '_shared/Icons';
 import { LocationGenerics, Person, RequestStatus } from '_shared/types';
 
