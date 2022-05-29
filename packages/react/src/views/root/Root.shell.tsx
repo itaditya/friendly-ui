@@ -5,6 +5,7 @@ import { Outlet } from '@tanstack/react-location';
 const RootShell = () => {
   return (
     <div className={layoutStyles.layoutApp}>
+      <p>Root</p>
       {/* <Search /> */}
       {/* <Suspense fallback="loading"> */}
       <Outlet />

@@ -1,41 +1,40 @@
 import { ReactLocation, Router, Route, Outlet } from '@tanstack/react-location';
 
-import RootShell from './views/root/Root.shell';
-import PeopleShell from './views/people/People.shell';
-import PeopleView from './views/people/People.view';
-import PersonDetailView from './views/people/PersonDetail.view';
-import HomeView from './views/Home.view';
-
-// const RootShell = lazy(() => import('./views/root/Root.shell'));
-// const PeopleShell = lazy(() => import('./views/people/People.shell'));
-// const PeopleView = lazy(() => import('./views/people/People.view'));
-// const PersonDetailView = lazy(() => import('./views/people/PersonDetail.view'));
-// const HomeView = lazy(() => import('./views/Home.view'));
+const rootShellElement = () =>
+  import('./views/root/Root.shell').then((mod) => <mod.default />);
+const peopleShellElement = () =>
+  import('./views/people/People.shell').then((mod) => <mod.default />);
+const peopleViewElement = () =>
+  import('./views/people/People.view').then((mod) => <mod.default />);
+const personDetailViewElement = () =>
+  import('./views/people/PersonDetail.view').then((mod) => <mod.default />);
+const homeViewElement = () =>
+  import('./views/Home.view').then((mod) => <mod.default />);
 
 const reactLocation = new ReactLocation();
 
 const routes: Array<Route> = [
   {
     path: '',
-    element: <RootShell />,
+    element: rootShellElement,
     children: [
       {
-        path: 'people',
-        element: <PeopleShell />,
-        children: [
-          {
-            path: ':id',
-            element: <PersonDetailView />,
-          },
-          {
-            path: '/*all',
-            element: <PeopleView />,
-          },
-        ],
+        path: '/',
+        element: homeViewElement,
       },
       {
-        path: '/',
-        element: <HomeView />,
+        path: 'people',
+        element: peopleShellElement,
+        children: [
+          {
+            path: '/',
+            element: peopleViewElement,
+          },
+          {
+            path: ':id',
+            element: personDetailViewElement,
+          },
+        ],
       },
     ],
   },
