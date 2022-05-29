@@ -25,7 +25,7 @@ export const SearchStoreProvider: ParentComponent = (p) => {
   const methods: SearchMethods = {
     runSearch(query) {
       setSearch(
-        produce(async (draft) => {
+        produce((draft) => {
           const lastQuery = draft.query;
 
           draft.query = query;

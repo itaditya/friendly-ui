@@ -22,6 +22,17 @@ export interface FriendsState {
 
 export type FriendsStore = StoreApi<FriendsState>;
 
+export type SearchQuery = string;
+
+export interface SearchState {
+  query: SearchQuery;
+  history: Array<SearchQuery>;
+  runSearch: (query: SearchQuery) => void;
+  clearSearch: () => void;
+}
+
+export type SearchStore = StoreApi<SearchState>;
+
 export type LocationGenerics = MakeGenerics<{
   LoaderData: {
     people: People;
