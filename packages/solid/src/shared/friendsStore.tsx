@@ -1,7 +1,6 @@
 import { createContext, ParentComponent, useContext } from 'solid-js';
 import { createStore, produce } from 'solid-js/store';
 import { FriendsMethods, FriendsState, FriendsStore } from './types';
-import { sleep } from './utils';
 
 const storeContext = createContext<FriendsStore>();
 
@@ -34,7 +33,7 @@ export const FriendsStoreProvider: ParentComponent = (p) => {
     },
     removeFriend(personId) {
       setFriends(
-        produce(async (draft) => {
+        produce((draft) => {
           delete draft.statusMap[personId];
         }),
       );
@@ -45,3 +44,9 @@ export const FriendsStoreProvider: ParentComponent = (p) => {
 
   return <storeContext.Provider value={store} children={p.children} />;
 };
+
+function sleep(delay: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+}

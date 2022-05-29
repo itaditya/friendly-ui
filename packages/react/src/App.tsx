@@ -1,4 +1,5 @@
-import { ReactLocation, Router, Route } from '@tanstack/react-location';
+import { ReactLocation, Route, Router } from '@tanstack/react-location';
+import { FriendsStoreProvider } from '_shared/friendsStore';
 import peopleLoader from './views/people/People.loader';
 
 const rootShellElement = () =>
@@ -44,7 +45,9 @@ const routes: Array<Route> = [
 
 function App() {
   return (
-    <Router location={reactLocation} routes={routes} />
+    <FriendsStoreProvider>
+      <Router location={reactLocation} routes={routes} />
+    </FriendsStoreProvider>
   );
 }
 
