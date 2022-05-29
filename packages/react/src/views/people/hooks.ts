@@ -13,7 +13,6 @@ export const usePeopleList = () => {
   const routeData = usePeopleRouteData();
   const searchParams = useSearch();
   const isFilterFriends = searchParams.filter === 'friends';
-  console.log(`statusMap`, statusMap); // aditodo remove this
   
   const people = routeData;
 

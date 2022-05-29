@@ -49,11 +49,7 @@ function PersonDetailView() {
       <div className={personDetailStyles.bio}>
         <h2 className={personDetailStyles.name}>{name}</h2>
         <p className={personDetailStyles.description}>{description}</p>
-        <AddBtn
-          personId={id}
-          status={friendStatus}
-          onClick={handleClick}
-        />
+        <AddBtn status={friendStatus} onClick={handleClick} />
       </div>
     </div>
   );

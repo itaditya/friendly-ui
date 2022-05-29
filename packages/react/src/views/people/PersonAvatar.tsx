@@ -1,6 +1,6 @@
 import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
 import { Link, useSearch } from '@tanstack/react-location';
-// import { useFriendsStore } from '_shared/friendsStore';
+import { useFriendsStore } from '_shared/friendsStore';
 // import {
 //   AddFriendIcon,
 //   PendingRequestIcon,
@@ -21,7 +21,8 @@ const PersonAvatar = (op) => {
     ...op,
   };
   const searchParams = useSearch();
-  // const [friends, methods] = useFriendsStore();
+  const { statusMap, addFriend, removeFriend } = useFriendsStore();
+  const friendStatus = statusMap[p.person.id];
 
   function getPersonLink() {
     const urlParams = new URLSearchParams(searchParams);
@@ -30,23 +31,18 @@ const PersonAvatar = (op) => {
     return `/people/${p.person.id}?${qs}`;
   }
 
-  function friendStatus() {
-    return undefined;
-    // return friends.statusMap[p.person.id];
-  }
-
   function handleAddFriend(event: MouseEvent) {
-    if (friendStatus() === 'requested') {
+    if (friendStatus === 'requested') {
       event.preventDefault();
       return;
     }
 
-    if (friendStatus() === 'accepted') {
-      // methods.removeFriend(p.person.id);
+    if (friendStatus === 'accepted') {
+      removeFriend(p.person.id);
       return;
     }
 
-    // methods.addFriend(p.person.id);
+    addFriend(p.person.id);
   }
 
   const commonBtnIconProps = {
@@ -66,9 +62,9 @@ const PersonAvatar = (op) => {
       <button
         type="button"
         className={personAvatarStyles.addBtn}
-        data-status={friendStatus()}
-        tabIndex={friendStatus() === 'requested' ? -1 : undefined}
-        aria-disabled={friendStatus() === 'requested'}
+        data-status={friendStatus}
+        tabIndex={friendStatus === 'requested' ? -1 : undefined}
+        aria-disabled={friendStatus === 'requested'}
         onClick={handleAddFriend}
       >
         ab

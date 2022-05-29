@@ -7,7 +7,6 @@ import { PersonId, RequestStatus } from '_shared/types';
 import { usePeopleRouteData } from './primitives';
 
 interface AddBtnProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
-  personId: PersonId;
   status: RequestStatus;
 }
 
@@ -78,11 +77,7 @@ const PersonDetailView: Component = () => {
         <div class={personDetailStyles.bio} use:autoAnimate>
           <h2 class={personDetailStyles.name}>{name}</h2>
           <p class={personDetailStyles.description}>{description}</p>
-          <AddBtn
-            personId={id}
-            status={friendStatus(id)}
-            onClick={[handleAddFriend, id]}
-          />
+          <AddBtn status={friendStatus(id)} onClick={[handleAddFriend, id]} />
         </div>
       </>
     );
