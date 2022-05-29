@@ -1,0 +1,56 @@
+[
+  {
+    "id": "sarah",
+    "name": "Sarah",
+    "description": "Lebanon, Asia",
+    "imageUrl": "/avatars/sarah.png"
+  },
+  {
+    "id": "daniel",
+    "name": "Daniel",
+    "description": "Sydney, Australia",
+    "imageUrl": "/avatars/daniel.png"
+  },
+  {
+    "id": "julia",
+    "name": "Julia",
+    "description": "California, USA",
+    "imageUrl": "/avatars/julia.png"
+  },
+  {
+    "id": "jordan",
+    "name": "Jordan",
+    "description": "Texas, USA",
+    "imageUrl": "/avatars/jordan.png"
+  },
+  {
+    "id": "lucy",
+    "name": "Lucy",
+    "description": "California, USA",
+    "imageUrl": "/avatars/lucy.png"
+  },
+  {
+    "id": "henry",
+    "name": "Henry",
+    "description": "Mumbai, India",
+    "imageUrl": "/avatars/henry.png"
+  },
+  {
+    "id": "rachel",
+    "name": "Rachel",
+    "description": "New York, USA",
+    "imageUrl": "/avatars/rachel.png"
+  },
+  {
+    "id": "terry",
+    "name": "Terry",
+    "description": "Belmont, London",
+    "imageUrl": "/avatars/terry.png"
+  },
+  {
+    "id": "susan",
+    "name": "Susan",
+    "description": "Costa Rica",
+    "imageUrl": "/avatars/susan.png"
+  }
+]

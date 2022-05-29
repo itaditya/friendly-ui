@@ -1,4 +1,5 @@
-import { ReactLocation, Router, Route, Outlet } from '@tanstack/react-location';
+import { ReactLocation, Router, Route } from '@tanstack/react-location';
+import peopleLoader from './views/people/People.loader';
 
 const rootShellElement = () =>
   import('./views/root/Root.shell').then((mod) => <mod.default />);
@@ -25,6 +26,7 @@ const routes: Array<Route> = [
       {
         path: 'people',
         element: peopleShellElement,
+        loader: peopleLoader,
         children: [
           {
             path: '/',
@@ -42,9 +44,7 @@ const routes: Array<Route> = [
 
 function App() {
   return (
-    <Router location={reactLocation} routes={routes}>
-      <Outlet />
-    </Router>
+    <Router location={reactLocation} routes={routes} />
   );
 }
 
