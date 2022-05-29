@@ -1,6 +1,7 @@
 import { useMatch, useMatchRoute, useSearch } from '@tanstack/react-location';
 import { useMemo } from 'react';
 import { useFriendsStore } from '_shared/friendsStore';
+import { useSearchStore } from '_shared/searchStore';
 import { LocationGenerics } from '_shared/types';
 
 export const usePeopleRouteData = () => {
@@ -11,19 +12,29 @@ export const usePeopleRouteData = () => {
 
 export const usePeopleList = () => {
   const statusMap = useFriendsStore((state) => state.statusMap);
+  const searchQuery = useSearchStore((state) => state.query);
   const routeData = usePeopleRouteData();
   const searchParams = useSearch();
   const isFilterFriends = searchParams.filter === 'friends';
 
-  const people = routeData;
+  const searchedPeople = useMemo(() => {
+    const query = searchQuery.toLowerCase();
+
+    return routeData.filter((person) => {
+      const name = person.name.toLowerCase();
+      return name.includes(query);
+    });
+  }, [searchQuery, routeData]);
 
   const peopleList = useMemo(() => {
     if (!isFilterFriends) {
-      return people;
+      return searchedPeople;
     }
 
-    return people.filter((person) => statusMap[person.id] === 'accepted');
-  }, [isFilterFriends, people, statusMap]);
+    return searchedPeople.filter(
+      (person) => statusMap[person.id] === 'accepted',
+    );
+  }, [isFilterFriends, searchedPeople, statusMap]);
 
   return peopleList;
 };

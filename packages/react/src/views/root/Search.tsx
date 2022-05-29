@@ -6,22 +6,22 @@ import { useSearchStore } from '_shared/searchStore';
 type SubmitHandler = FormEventHandler<HTMLFormElement>;
 
 const Search = () => {
-  const { history, runSearch, clearSearch } = useSearchStore();
+  const { history, runSearch } = useSearchStore();
   const [show, setShow] = useState(false);
 
   const handleSubmit: SubmitHandler = (event) => {
     event.preventDefault();
     const formElem = event.currentTarget;
     const formData = new FormData(formElem);
-    const newQuery = formData.get('search');
+    const query = formData.get('search');
 
-    if (typeof newQuery === 'string') {
-      runSearch(newQuery);
+    if (typeof query === 'string') {
+      runSearch(query);
     }
   };
 
   const handleReset = () => {
-    clearSearch();
+    runSearch('');
   };
 
   const historyList = history.length === 0 ? ['No Search History'] : history;

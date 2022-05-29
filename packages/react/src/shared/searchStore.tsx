@@ -22,9 +22,6 @@ const createStore = () =>
           }
         });
       },
-      clearSearch() {
-        this.runSearch('');
-      },
     })),
   );
 

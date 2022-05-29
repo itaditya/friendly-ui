@@ -28,7 +28,6 @@ export interface SearchState {
   query: SearchQuery;
   history: Array<SearchQuery>;
   runSearch: (query: SearchQuery) => void;
-  clearSearch: () => void;
 }
 
 export type SearchStore = StoreApi<SearchState>;
