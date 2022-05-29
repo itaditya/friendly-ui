@@ -5,7 +5,7 @@ import { Component, For } from 'solid-js';
 import PersonAvatar from './PersonAvatar';
 import { createHeaderHref, createPeopleList } from './primitives';
 
-const PeopleView: Component = () => {
+const PeopleShell: Component = () => {
   const [searchParams] = useSearchParams();
   const peopleList = createPeopleList();
   const headerHref = createHeaderHref();
@@ -44,4 +44,4 @@ const PeopleView: Component = () => {
   );
 };
 
-export default PeopleView;
+export default PeopleShell;
