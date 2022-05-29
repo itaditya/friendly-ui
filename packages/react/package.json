@@ -8,9 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@friendly-ui/design": "workspace:*",
+    "@tanstack/react-location": "^3.7.4",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "@friendly-ui/design": "workspace:*"
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
