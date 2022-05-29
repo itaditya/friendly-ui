@@ -1,10 +1,11 @@
 import { useMatch, useMatchRoute, useSearch } from '@tanstack/react-location';
 import { useMemo } from 'react';
 import { useFriendsStore } from '_shared/friendsStore';
+import { LocationGenerics } from '_shared/types';
 
 export const usePeopleRouteData = () => {
-  const match = useMatch();
-  const routeData = match.data.people;
+  const match = useMatch<LocationGenerics>();
+  const routeData = match.data.people || [];
   return routeData;
 };
 
@@ -13,7 +14,7 @@ export const usePeopleList = () => {
   const routeData = usePeopleRouteData();
   const searchParams = useSearch();
   const isFilterFriends = searchParams.filter === 'friends';
-  
+
   const people = routeData;
 
   const peopleList = useMemo(() => {
@@ -21,21 +22,19 @@ export const usePeopleList = () => {
       return people;
     }
 
-    return people.filter(
-      (person) => statusMap[person.id] === 'accepted',
-    );
+    return people.filter((person) => statusMap[person.id] === 'accepted');
   }, [isFilterFriends, people, statusMap]);
 
   return peopleList;
 };
 
 export const useHeaderLink = () => {
-  const searchParams = useSearch();
-  const matchRoute = useMatchRoute();
+  const searchParams = useSearch<LocationGenerics>();
+  const matchRoute = useMatchRoute<LocationGenerics>();
 
   function getHeaderLink() {
     const match = matchRoute({ to: ':id' });
-    const personId = match.id;
+    const personId = match?.id;
 
     let url = '/people';
 

@@ -1,12 +1,13 @@
 import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
 import { Link, useSearch } from '@tanstack/react-location';
+import { FC, MouseEventHandler } from 'react';
 import { useFriendsStore } from '_shared/friendsStore';
 import {
   AddFriendIcon,
   PendingRequestIcon,
   RemoveFriendIcon,
 } from '_shared/Icons';
-import { Person, RequestStatus } from '_shared/types';
+import { LocationGenerics, Person, RequestStatus } from '_shared/types';
 
 function getIcon(status: RequestStatus) {
   if (status === 'requested') {
@@ -27,12 +28,12 @@ export type PersonAvatarProps = {
 
 const defaultProps = { className: '' } as const;
 
-const PersonAvatar = (op) => {
+const PersonAvatar: FC<PersonAvatarProps> = (op) => {
   const p = {
     ...defaultProps,
     ...op,
   };
-  const searchParams = useSearch();
+  const searchParams = useSearch<LocationGenerics>();
   const { statusMap, addFriend, removeFriend } = useFriendsStore();
   const friendStatus = statusMap[p.person.id];
 
@@ -43,7 +44,7 @@ const PersonAvatar = (op) => {
     return `/people/${p.person.id}?${qs}`;
   }
 
-  function handleAddFriend(event: MouseEvent) {
+  const handleAddFriend: MouseEventHandler<HTMLButtonElement> = (event) => {
     if (friendStatus === 'requested') {
       event.preventDefault();
       return;

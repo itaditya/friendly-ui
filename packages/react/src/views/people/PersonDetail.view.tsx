@@ -1,8 +1,8 @@
 import personDetailStyles from '@friendly-ui/design/person_detail.module.css';
-import { useMatch } from '@tanstack/react-location';
-import { ButtonHTMLAttributes, FC } from 'react';
+import { Navigate, useMatch } from '@tanstack/react-location';
+import { ButtonHTMLAttributes, FC, MouseEventHandler } from 'react';
 import { useFriendsStore } from '_shared/friendsStore';
-import { RequestStatus } from '_shared/types';
+import { LocationGenerics, RequestStatus } from '_shared/types';
 
 interface AddBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   status: RequestStatus;
@@ -38,15 +38,13 @@ const AddBtn: FC<AddBtnProps> = ({ status, onClick }) => {
 function PersonDetailView() {
   const {
     params: { id },
-    data: { people },
-  } = useMatch();
+    data: { people = [] },
+  } = useMatch<LocationGenerics>();
   const { statusMap, addFriend, removeFriend } = useFriendsStore();
 
   const friendStatus = statusMap[id];
-  const person = people.find((person) => person.id === id);
-  const { name, description, imageUrl } = person;
 
-  function handleClick(event) {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     if (friendStatus === 'requested') {
       event.preventDefault();
     }
@@ -57,7 +55,15 @@ function PersonDetailView() {
     }
 
     addFriend(id);
+  };
+
+  const person = people.find((person) => person.id === id);
+
+  if (!person) {
+    return <Navigate to="/people" />;
   }
+
+  const { name, description, imageUrl } = person;
 
   return (
     <div className={personDetailStyles.wrapper}>

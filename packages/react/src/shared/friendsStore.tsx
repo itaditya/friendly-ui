@@ -1,11 +1,13 @@
+import { ReactNode } from 'react';
 import create from 'zustand';
 import createContext from 'zustand/context';
 import { immer } from 'zustand/middleware/immer';
+import { FriendsStore, FriendsState } from './types';
 
-const { Provider, useStore } = createContext();
+const { Provider, useStore } = createContext<FriendsStore>();
 
 const createStore = () =>
-  create(
+  create<FriendsState>()(
     immer((set) => ({
       statusMap: {},
       async addFriend(personId) {
@@ -25,8 +27,8 @@ const createStore = () =>
     })),
   );
 
-export const FriendsStoreProvider = ({ children }) => {
-  return <Provider createStore={createStore} children={children} />;
+export const FriendsStoreProvider = (props: { children: ReactNode }) => {
+  return <Provider createStore={createStore} {...props} />;
 };
 
 export { useStore as useFriendsStore };

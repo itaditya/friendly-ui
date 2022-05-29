@@ -1,3 +1,6 @@
+import { MakeGenerics } from '@tanstack/react-location';
+import { StoreApi } from 'zustand';
+
 export type PersonId = string;
 
 export interface Person {
@@ -10,3 +13,23 @@ export interface Person {
 export type People = Array<Person>;
 
 export type RequestStatus = undefined | 'requested' | 'accepted';
+
+export interface FriendsState {
+  statusMap: Record<PersonId, RequestStatus>;
+  addFriend: (personId: PersonId) => void;
+  removeFriend: (personId: PersonId) => void;
+}
+
+export type FriendsStore = StoreApi<FriendsState>;
+
+export type LocationGenerics = MakeGenerics<{
+  LoaderData: {
+    people: People;
+  };
+  Params: {
+    id: PersonId;
+  };
+  Search: {
+    filter: 'all' | 'friends';
+  };
+}>;
