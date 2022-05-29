@@ -1,12 +1,24 @@
 import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
 import { Link, useSearch } from '@tanstack/react-location';
 import { useFriendsStore } from '_shared/friendsStore';
-// import {
-//   AddFriendIcon,
-//   PendingRequestIcon,
-//   RemoveFriendIcon
-// } from '_shared/Icons';
-import { Person } from '_shared/types';
+import {
+  AddFriendIcon,
+  PendingRequestIcon,
+  RemoveFriendIcon,
+} from '_shared/Icons';
+import { Person, RequestStatus } from '_shared/types';
+
+function getIcon(status: RequestStatus) {
+  if (status === 'requested') {
+    return PendingRequestIcon;
+  }
+
+  if (status === 'accepted') {
+    return RemoveFriendIcon;
+  }
+
+  return AddFriendIcon;
+}
 
 export type PersonAvatarProps = {
   person: Person;
@@ -45,9 +57,7 @@ const PersonAvatar = (op) => {
     addFriend(p.person.id);
   }
 
-  const commonBtnIconProps = {
-    className: personAvatarStyles.addBtnIcon,
-  };
+  const IconComponent = getIcon(friendStatus);
 
   return (
     <div className={personAvatarStyles.avatarWrapper}>
@@ -67,7 +77,7 @@ const PersonAvatar = (op) => {
         aria-disabled={friendStatus === 'requested'}
         onClick={handleAddFriend}
       >
-        ab
+        <IconComponent className={personAvatarStyles.addBtnIcon} />
       </button>
     </div>
   );

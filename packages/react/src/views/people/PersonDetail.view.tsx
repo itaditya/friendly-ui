@@ -1,8 +1,26 @@
 import personDetailStyles from '@friendly-ui/design/person_detail.module.css';
 import { useMatch } from '@tanstack/react-location';
+import { ButtonHTMLAttributes, FC } from 'react';
 import { useFriendsStore } from '_shared/friendsStore';
+import { RequestStatus } from '_shared/types';
 
-const AddBtn = ({ status, onClick }) => {
+interface AddBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  status: RequestStatus;
+}
+
+const AddBtn: FC<AddBtnProps> = ({ status, onClick }) => {
+  function renderContent() {
+    if (status === 'requested') {
+      return 'Pending';
+    }
+
+    if (status === 'accepted') {
+      return 'Unfriend';
+    }
+
+    return 'Add Friend';
+  }
+
   return (
     <button
       className={personDetailStyles.addBtn}
@@ -12,7 +30,7 @@ const AddBtn = ({ status, onClick }) => {
       aria-disabled={status === 'requested'}
       onClick={onClick}
     >
-      Add Friend
+      {renderContent()}
     </button>
   );
 };

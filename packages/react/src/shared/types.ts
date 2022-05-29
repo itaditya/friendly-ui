@@ -8,3 +8,5 @@ export interface Person {
 }
 
 export type People = Array<Person>;
+
+export type RequestStatus = undefined | 'requested' | 'accepted';
