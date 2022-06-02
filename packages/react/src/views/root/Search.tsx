@@ -58,11 +58,16 @@ const Search = () => {
         <button
           className={searchStyles.historyBtn}
           type="button"
+          aria-label="Search History"
           onClick={() => setShow((old) => !old)}
         >
           <SearchHistoryIcon />
         </button>
-        <button className={searchStyles.resetBtn} type="reset">
+        <button
+          className={searchStyles.resetBtn}
+          type="reset"
+          aria-label="Clear Search"
+        >
           <ClearSearchIcon />
         </button>
       </form>

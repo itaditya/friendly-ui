@@ -44,18 +44,25 @@ const Search: Component = () => {
         <button
           class={searchStyles.historyBtn}
           type="button"
+          aria-label="Search History"
           onClick={() => setShow((old) => !old)}
         >
           <SearchHistoryIcon />
         </button>
-        <button class={searchStyles.resetBtn} type="reset">
+        <button
+          class={searchStyles.resetBtn}
+          type="reset"
+          aria-label="Clear Search"
+        >
           <ClearSearchIcon />
         </button>
       </form>
       <Show when={show()}>
         <ul class={searchStyles.history}>
           <For each={search.history} fallback={<li>No Search History</li>}>
-            {(searchRecord) => <li class={searchStyles.historyItem}>{searchRecord}</li>}
+            {(searchRecord) => (
+              <li class={searchStyles.historyItem}>{searchRecord}</li>
+            )}
           </For>
         </ul>
       </Show>
