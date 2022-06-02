@@ -1,16 +1,36 @@
-import { FC, ReactNode } from 'react';
-import { Helmet } from 'react-helmet';
+import { FC, useEffect, useRef } from 'react';
 
 export interface PageTitleProps {
-  children: ReactNode;
+  children: string;
 }
 
 const PageTitle: FC<PageTitleProps> = (p) => {
-  return (
-    <Helmet titleTemplate="%s | Friendly React">
-      <title>{p.children}</title>
-    </Helmet>
-  );
+  const { children } = p;
+  const initialTitle = useRef('');
+
+  useEffect(() => {
+    initialTitle.current = document.title;
+
+    return () => {
+      document.title = initialTitle.current;
+    };
+  }, []);
+
+  useEffect(() => {
+    function getContent() {
+      const baseContent = 'Friendly React';
+
+      if (children) {
+        return `${children} | ${baseContent}`;
+      }
+
+      return baseContent;
+    }
+
+    document.title = getContent();
+  }, [children]);
+
+  return null;
 };
 
 export default PageTitle;
