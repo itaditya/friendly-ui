@@ -1,13 +1,16 @@
 import homeStyles from '@friendly-ui/design/home.module.css';
-import { Link } from '@tanstack/react-location';
+import { Link, useRouter } from '@tanstack/react-location';
 import PageTitle from '_shared/PageTitle';
+import { LocationGenerics } from '_shared/types';
 
 function HomeView() {
+  const router = useRouter<LocationGenerics>();
+
   return (
     <div className={homeStyles.wrapper}>
       <PageTitle>Home</PageTitle>
       <Link className={homeStyles.demoLink} to="/people">
-        React Demo
+        {router.pending ? 'Loading...' : 'React Demo'}
       </Link>
       <a
         className={homeStyles.demoLink}
