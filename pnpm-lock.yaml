@@ -46,6 +46,7 @@ importers:
       solid-app-router: ^0.3.3
       solid-auto-animate: ^0.1.0
       solid-js: ^1.4.2
+      solid-meta: ^0.27.5
       typescript: ^4.6.4
       vite: ^2.9.9
       vite-plugin-solid: ^2.2.6
@@ -55,6 +56,7 @@ importers:
       solid-app-router: 0.3.3_solid-js@1.4.3
       solid-auto-animate: 0.1.0_mmlkmqvmaiwhazguzgaiykmjgu
       solid-js: 1.4.3
+      solid-meta: 0.27.5_solid-js@1.4.3
     devDependencies:
       typescript: 4.6.4
       vite: 2.9.9
@@ -1103,6 +1105,14 @@ packages:
 
   /solid-js/1.4.3:
     resolution: {integrity: sha512-3uh2cbT4ICronIasLAxycF6SVgvqcfwFCDCzlEA9CEahn1qQg8Rw8aRGiI4O51PrHcN5aPRO9knYYRCs0PgzcQ==}
+
+  /solid-meta/0.27.5_solid-js@1.4.3:
+    resolution: {integrity: sha512-9OA50aNBhCwuFo1Uby9NT3gB6I6iBRN0mSXkXROJyWDtmyhdw9iyMT9JsnGF/A/7IQq2BSLV75oPQjNKQAMeQw==}
+    peerDependencies:
+      solid-js: '>=1.4.0'
+    dependencies:
+      solid-js: 1.4.3
+    dev: false
 
   /solid-refresh/0.4.0_solid-js@1.4.3:
     resolution: {integrity: sha512-5XCUz845n/sHPzKK2i2G2EeV61tAmzv6SqzqhXcPaYhrgzVy7nKTQaBpKK8InKrriq9Z2JFF/mguIU00t/73xw==}

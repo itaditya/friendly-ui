@@ -19,6 +19,7 @@
     "@friendly-ui/design": "workspace:*",
     "solid-app-router": "^0.3.3",
     "solid-auto-animate": "^0.1.0",
-    "solid-js": "^1.4.2"
+    "solid-js": "^1.4.2",
+    "solid-meta": "^0.27.5"
   }
 }

@@ -3,6 +3,7 @@ import { Navigate, useParams } from 'solid-app-router';
 import { autoAnimate } from 'solid-auto-animate';
 import { Component, JSX, Match, Switch } from 'solid-js';
 import { useFriendsStore } from '_shared/friendsStore';
+import PageTitle from '_shared/PageTitle';
 import { PersonId, RequestStatus } from '_shared/types';
 import { usePeopleRouteData } from './primitives';
 
@@ -71,6 +72,7 @@ const PersonDetailView: Component = () => {
 
     return (
       <>
+        <PageTitle>{name}</PageTitle>
         <div>
           <img src={imageUrl} alt="" class={personDetailStyles.avatar} />
         </div>

@@ -1,5 +1,7 @@
 import { RouteDefinition, useRoutes } from 'solid-app-router';
 import { Component, lazy } from 'solid-js';
+import { MetaProvider } from 'solid-meta';
+import PageTitle from '_shared/PageTitle';
 import { SearchStoreProvider } from '_shared/searchStore';
 import { FriendsStoreProvider } from './shared/friendsStore';
 import PeopleData from './views/people/People.data';
@@ -42,11 +44,14 @@ const App: Component = () => {
   const Routes = useRoutes(routes);
 
   return (
-    <FriendsStoreProvider>
-      <SearchStoreProvider>
-        <Routes />
-      </SearchStoreProvider>
-    </FriendsStoreProvider>
+    <MetaProvider>
+      <FriendsStoreProvider>
+        <SearchStoreProvider>
+          <PageTitle />
+          <Routes />
+        </SearchStoreProvider>
+      </FriendsStoreProvider>
+    </MetaProvider>
   );
 };
 
