@@ -3,6 +3,7 @@ import { HeadProvider } from 'react-head';
 import { FriendsStoreProvider } from '_shared/friendsStore';
 import { SearchStoreProvider } from '_shared/searchStore';
 import peopleLoader from './views/people/People.loader';
+import PeoplePendingFallback from './views/root/PeoplePendingFallback';
 
 const rootShellElement = () =>
   import('./views/root/Root.shell').then((mod) => <mod.default />);
@@ -21,6 +22,8 @@ const routes: Array<Route> = [
   {
     path: '',
     element: rootShellElement,
+    pendingElement: async () => <PeoplePendingFallback />,
+    pendingMs: 0,
     children: [
       {
         path: '/',
