@@ -5,7 +5,7 @@ import { useFriendsStore } from '_shared/friendsStore';
 import {
   AddFriendIcon,
   PendingRequestIcon,
-  RemoveFriendIcon
+  RemoveFriendIcon,
 } from '_shared/Icons';
 import { LocationGenerics, Person, RequestStatus } from '_shared/types';
 
@@ -19,6 +19,18 @@ function getIcon(status: RequestStatus) {
   }
 
   return AddFriendIcon;
+}
+
+function getLabel(status: RequestStatus) {
+  if (status === 'requested') {
+    return 'Pending';
+  }
+
+  if (status === 'accepted') {
+    return 'Unfriend';
+  }
+
+  return 'Add Friend';
 }
 
 export type PersonAvatarProps = {
@@ -56,7 +68,7 @@ const PersonAvatar: FC<PersonAvatarProps> = (op) => {
     }
 
     addFriend(p.person.id);
-  }
+  };
 
   const IconComponent = getIcon(friendStatus);
 
@@ -76,6 +88,7 @@ const PersonAvatar: FC<PersonAvatarProps> = (op) => {
         data-status={friendStatus}
         tabIndex={friendStatus === 'requested' ? -1 : undefined}
         aria-disabled={friendStatus === 'requested'}
+        aria-label={getLabel(friendStatus)}
         onClick={handleAddFriend}
       >
         <IconComponent className={personAvatarStyles.addBtnIcon} />

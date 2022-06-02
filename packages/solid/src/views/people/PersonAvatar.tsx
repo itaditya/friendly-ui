@@ -1,13 +1,38 @@
 import personAvatarStyles from '@friendly-ui/design/person_avatar.module.css';
 import { Link, useSearchParams } from 'solid-app-router';
-import { Match, mergeProps, ParentComponent, Switch } from 'solid-js';
+import { mergeProps, ParentComponent } from 'solid-js';
+import { Dynamic } from 'solid-js/web';
 import { useFriendsStore } from '_shared/friendsStore';
 import {
   AddFriendIcon,
   PendingRequestIcon,
-  RemoveFriendIcon
+  RemoveFriendIcon,
 } from '_shared/Icons';
-import { Person } from '_shared/types';
+import { Person, RequestStatus } from '_shared/types';
+
+function getIcon(status: RequestStatus) {
+  if (status === 'requested') {
+    return PendingRequestIcon;
+  }
+
+  if (status === 'accepted') {
+    return RemoveFriendIcon;
+  }
+
+  return AddFriendIcon;
+}
+
+function getLabel(status: RequestStatus) {
+  if (status === 'requested') {
+    return 'Pending';
+  }
+
+  if (status === 'accepted') {
+    return 'Unfriend';
+  }
+
+  return 'Add Friend';
+}
 
 export type PersonAvatarProps = {
   person: Person;
@@ -46,10 +71,6 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (op) => {
     methods.addFriend(p.person.id);
   }
 
-  const commonBtnIconProps = {
-    class: personAvatarStyles.addBtnIcon,
-  };
-
   return (
     <div class={personAvatarStyles.avatarWrapper}>
       <Link href={personLink()} class={personAvatarStyles.avatarLink}>
@@ -66,16 +87,13 @@ const PersonAvatar: ParentComponent<PersonAvatarProps> = (op) => {
         data-status={friendStatus()}
         tabIndex={friendStatus() === 'requested' ? -1 : undefined}
         aria-disabled={friendStatus() === 'requested'}
+        aria-label={getLabel(friendStatus())}
         onClick={handleAddFriend}
       >
-        <Switch fallback={<AddFriendIcon {...commonBtnIconProps} />}>
-          <Match when={friendStatus() === 'requested'}>
-            <PendingRequestIcon {...commonBtnIconProps} />
-          </Match>
-          <Match when={friendStatus() === 'accepted'}>
-            <RemoveFriendIcon {...commonBtnIconProps} />
-          </Match>
-        </Switch>
+        <Dynamic
+          component={getIcon(friendStatus())}
+          class={personAvatarStyles.addBtnIcon}
+        />
       </button>
     </div>
   );
