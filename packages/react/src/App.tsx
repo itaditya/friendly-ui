@@ -32,7 +32,6 @@ const routes: Array<Route> = [
         loader: peopleLoader,
         pendingElement: async () => <PeoplePendingContent />,
         pendingMs: 0,
-        pendingMinMs: 1000,
         children: [
           {
             path: '/',
