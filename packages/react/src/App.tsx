@@ -2,6 +2,7 @@ import { ReactLocation, Route, Router } from '@tanstack/react-location';
 import { FriendsStoreProvider } from '_shared/friendsStore';
 import { SearchStoreProvider } from '_shared/searchStore';
 import peopleLoader from './views/people/People.loader';
+import PeoplePendingContent from './views/root/PeoplePendingFallback';
 
 const rootShellElement = () =>
   import('./views/root/Root.shell').then((mod) => <mod.default />);
@@ -29,8 +30,9 @@ const routes: Array<Route> = [
         path: 'people',
         element: peopleShellElement,
         loader: peopleLoader,
-        pendingElement: async () => <p>loading</p>,
-        pendingMs: 20,
+        pendingElement: async () => <PeoplePendingContent />,
+        pendingMs: 0,
+        pendingMinMs: 1000,
         children: [
           {
             path: '/',
