@@ -1,4 +1,5 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react';
+import shallow from 'zustand/shallow';
 import searchStyles from '@friendly-ui/design/search.module.css';
 import { FormEventHandler, useState } from 'react';
 import { ClearSearchIcon, SearchHistoryIcon } from '_shared/Icons';
@@ -7,7 +8,10 @@ import { useSearchStore } from '_shared/searchStore';
 type SubmitHandler = FormEventHandler<HTMLFormElement>;
 
 const Search = () => {
-  const { history, runSearch } = useSearchStore();
+  const { history, runSearch } = useSearchStore((state) => {
+    const { history, runSearch } = state;
+    return { history, runSearch };
+  }, shallow);
   const [show, setShow] = useState(false);
   const [wrapperRef] = useAutoAnimate<HTMLDivElement>();
 
