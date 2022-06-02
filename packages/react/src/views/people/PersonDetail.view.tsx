@@ -3,6 +3,7 @@ import personDetailStyles from '@friendly-ui/design/person_detail.module.css';
 import { Navigate, useMatch } from '@tanstack/react-location';
 import { ButtonHTMLAttributes, FC, MouseEventHandler } from 'react';
 import { useFriendsStore } from '_shared/friendsStore';
+import PageTitle from '_shared/PageTitle';
 import { LocationGenerics, RequestStatus } from '_shared/types';
 
 interface AddBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -70,6 +71,7 @@ function PersonDetailView() {
 
   return (
     <div className={personDetailStyles.wrapper} ref={wrapperRef} key={id}>
+      <PageTitle>{name}</PageTitle>
       <div>
         <img src={imageUrl} alt="" className={personDetailStyles.avatar} />
       </div>
