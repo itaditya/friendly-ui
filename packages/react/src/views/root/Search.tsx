@@ -26,7 +26,19 @@ const Search = () => {
     runSearch('');
   };
 
-  const historyList = history.length === 0 ? ['No Search History'] : history;
+  function renderHistoryContent() {
+    if (history.length === 0) {
+      return <li>No Search History</li>;
+    }
+
+    const historyItems = history.map((searchRecord) => (
+      <li className={searchStyles.historyItem} key={searchRecord}>
+        {searchRecord}
+      </li>
+    ));
+
+    return historyItems;
+  }
 
   return (
     <section ref={wrapperRef}>
@@ -55,13 +67,7 @@ const Search = () => {
         </button>
       </form>
       {show && (
-        <ul className={searchStyles.history}>
-          {historyList.map((searchRecord) => (
-            <li className={searchStyles.historyItem} key={searchRecord}>
-              {searchRecord}
-            </li>
-          ))}
-        </ul>
+        <ul className={searchStyles.history}>{renderHistoryContent()}</ul>
       )}
     </section>
   );
