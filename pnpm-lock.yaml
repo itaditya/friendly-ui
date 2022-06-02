@@ -20,6 +20,7 @@ importers:
       immer: ^9.0.14
       react: ^18.0.0
       react-dom: ^18.0.0
+      react-head: ^3.4.0
       typescript: ^4.6.3
       vite: ^2.9.9
       zustand: 4.0.0-rc.1
@@ -31,6 +32,7 @@ importers:
       immer: 9.0.14
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
+      react-head: 3.4.0_ef5jwxihqo6n7gxfmzogljlgcm
       zustand: 4.0.0-rc.1_immer@9.0.14+react@18.1.0
     devDependencies:
       '@types/react': 18.0.10
@@ -987,6 +989,17 @@ packages:
       scheduler: 0.22.0
     dev: false
 
+  /react-head/3.4.0_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-T+a+WTN2lQECle3KdUBTnXMpjzOTDRFS1f2jCLP9H64XBXgayxadoLkzWSiJD793zE8IMWzQ8xKe3V573es9NQ==}
+    peerDependencies:
+      react: '>=16.3'
+      react-dom: '>=16.3'
+    dependencies:
+      '@babel/runtime': 7.18.3
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
+    dev: false
+
   /react-refresh/0.13.0:
     resolution: {integrity: sha512-XP8A9BT0CpRBD+NYLLeIhld/RqG9+gktUjW1FkE+Vm7OCinbG1SshcK5tb9ls4kzvjZr9mOQc7HYgBngEyPAXg==}
     engines: {node: '>=0.10.0'}
@@ -1130,6 +1143,7 @@ packages:
   /vite/2.9.9:
     resolution: {integrity: sha512-ffaam+NgHfbEmfw/Vuh6BHKKlI/XIAhxE5QSS7gFLIngxg171mg1P3a4LSRME0z2ZU1ScxoKzphkipcYwSD5Ew==}
     engines: {node: '>=12.2.0'}
+    hasBin: true
     peerDependencies:
       less: '*'
       sass: '*'

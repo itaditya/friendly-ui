@@ -1,4 +1,5 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC } from 'react';
+import { Title } from 'react-head';
 
 export interface PageTitleProps {
   children: string;
@@ -6,31 +7,17 @@ export interface PageTitleProps {
 
 const PageTitle: FC<PageTitleProps> = (p) => {
   const { children } = p;
-  const initialTitle = useRef('');
+  function getContent() {
+    const baseContent = 'Friendly React';
 
-  useEffect(() => {
-    initialTitle.current = document.title;
-
-    return () => {
-      document.title = initialTitle.current;
-    };
-  }, []);
-
-  useEffect(() => {
-    function getContent() {
-      const baseContent = 'Friendly React';
-
-      if (children) {
-        return `${children} | ${baseContent}`;
-      }
-
-      return baseContent;
+    if (children) {
+      return `${children} | ${baseContent}`;
     }
 
-    document.title = getContent();
-  }, [children]);
+    return baseContent;
+  }
 
-  return null;
+  return <Title>{getContent()}</Title>;
 };
 
 export default PageTitle;

@@ -1,4 +1,5 @@
 import { ReactLocation, Route, Router } from '@tanstack/react-location';
+import { HeadProvider } from 'react-head';
 import { FriendsStoreProvider } from '_shared/friendsStore';
 import { SearchStoreProvider } from '_shared/searchStore';
 import peopleLoader from './views/people/People.loader';
@@ -49,11 +50,14 @@ const routes: Array<Route> = [
 
 function App() {
   return (
-    <FriendsStoreProvider>
-      <SearchStoreProvider>
-        <Router location={reactLocation} routes={routes} />
-      </SearchStoreProvider>
-    </FriendsStoreProvider>
+    // @ts-expect-error HeadProvider is missing children prop type
+    <HeadProvider>
+      <FriendsStoreProvider>
+        <SearchStoreProvider>
+          <Router location={reactLocation} routes={routes} />
+        </SearchStoreProvider>
+      </FriendsStoreProvider>
+    </HeadProvider>
   );
 }
 
