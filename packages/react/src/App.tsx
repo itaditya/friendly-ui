@@ -29,6 +29,8 @@ const routes: Array<Route> = [
         path: 'people',
         element: peopleShellElement,
         loader: peopleLoader,
+        pendingElement: async () => <p>loading</p>,
+        pendingMs: 20,
         children: [
           {
             path: '/',
